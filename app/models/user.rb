@@ -6,6 +6,6 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
-  has_many :capsules
+  has_many :capsules, dependent: :destroy
   validates :name, presence: true, uniqueness: true
 end
