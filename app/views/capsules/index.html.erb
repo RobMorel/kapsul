@@ -1,0 +1,11 @@
+<h1>capsule</h1>
+
+<ul>
+  <% @capsules.each do |capsule| %>
+    <li>
+      <h2><%= link_to capsule.title, capsule_path(capsule) %></h2>
+      <p><%= capsule.teasing %></p>
+      <p>Catégorie : <%= capsule.category %></p>
+    </li>
+  <% end %>
+</ul>

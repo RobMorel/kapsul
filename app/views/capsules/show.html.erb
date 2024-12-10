@@ -1,0 +1,13 @@
+<h1><%= @capsule.title %></h1>
+<p><%= @capsule.teasing %></p>
+<p>Catégorie : <%= @capsule.category %></p>
+
+
+<h3>Commentaires :</h3>
+<ul>
+  <% @capsule.comments.each do |comment| %>
+    <li><%= comment.comment %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Retour aux capsules', capsules_path %>
