@@ -8,4 +8,7 @@ class Capsule < ApplicationRecord
   validates :teasing, presence: true, length: { maximum: 200 }
   validates :category, presence: true
   validates :address, presence: true
+
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end
