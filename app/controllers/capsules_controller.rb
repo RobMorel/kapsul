@@ -1,5 +1,5 @@
 class CapsulesController < ApplicationController
-  before_action :set_capsule, only: [:show, :like]
+  before_action :set_capsule, only: [:show]
 
   def index
     @capsules = Capsule.all

@@ -3,10 +3,6 @@
 <p>Catégorie : <%= @capsule.category %></p>
 
 
-<%= form_with url: like_capsule_path(@capsule), method: :post, local: true do |form| %>
-  <%= form.submit "Like" %>
-<% end %>
-
 <h3>Commentaires :</h3>
 <ul>
   <% @capsule.comments.each do |comment| %>
