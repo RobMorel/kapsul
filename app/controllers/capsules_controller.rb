@@ -1,8 +1,10 @@
 class CapsulesController < ApplicationController
+before_action :set_capsule, only: [:show]
+
 
 #bande de loser dans cette methode je recupère la liste de toutes les capsules et un hash de leurs coordonnées
 
-def index
+  def index
     @capsules = Capsule.all
     @markers = Capsule.geocoded.map do |capsule|
       {
@@ -12,4 +14,12 @@ def index
     end
   end
 
+  def show
+  end
+
+  private
+
+  def set_capsule
+      @capsule = Capsule.find(params[:id])
+  end
 end
