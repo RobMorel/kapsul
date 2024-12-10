@@ -15,11 +15,11 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :avatar, as: :file %>
+    <%= f.input :name%>
   </div>
 
-  <div class="form-actions mt-2">
-    <%= f.input :avatar, as: :file %>
-  </div>
+
 
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>
