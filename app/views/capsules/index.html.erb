@@ -1,0 +1,10 @@
+<h1>All Capsules</h1>
+
+<% @capsules.each do |capsule| %>
+  <div>
+    <h2><%= capsule.title %></h2>
+    <p>address: <%= capsule.address %></p>
+  </div>
+<% end %>
+
+<%= @markers %>
