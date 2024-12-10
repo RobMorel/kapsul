@@ -358,12 +358,8 @@ DEPENDENCIES
   dotenv-rails
   font-awesome-sass (~> 6.1)
   geocoder
-<<<<<<< HEAD
   importmap-rails (~> 1.2.3)
-=======
   image_processing
-  importmap-rails
->>>>>>> 658a34112a0eaa14f31485d9598aba676a3d2292
   jbuilder
   pg (~> 1.1)
   puma (>= 5.0)
