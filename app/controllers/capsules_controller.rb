@@ -9,7 +9,8 @@ before_action :set_capsule, only: [:show]
     @markers = Capsule.geocoded.map do |capsule|
       {
         lat: capsule.latitude,
-        lng: capsule.longitude
+        lng: capsule.longitude,
+        infoWindow: render_to_string(partial: "info_capsule", locals: { capsule: capsule }),
       }
     end
   end
