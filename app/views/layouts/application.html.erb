@@ -18,9 +18,15 @@
   </head>
 
   <body>
+    <div id="main-content" data-controller="menu" class="content">
+      <%= render "shared/menu_left"%>
+      <%= render "shared/menu_right"%>
+      <button class="btn left-burger" data-action="click->menu#openLeftMenu"><i class="fas fa-bars"></i></button>
+      <button class="btn right-burger" data-action="click->menu#openRightMenu"><i class="fas fa-bars"></i></button>
     <%= render "shared/flashes" %>
 
     <%= yield %>
     <%= render "shared/navbar" %>
+  </div>
   </body>
 </html>
