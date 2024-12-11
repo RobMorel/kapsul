@@ -1,0 +1,17 @@
+// Wrapper is the container of the visualizer and the recorder
+.wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: #FFF5E1;
+}
+// NOTE : colors of the canva need to be changed in the recorder.js file
+.visualizer {
+  width: 50%;
+}
+.recording {
+  color: red;
+  border: none;
+}
+.fa-microphone {
+  border: none;
+}
