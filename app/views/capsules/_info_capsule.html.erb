@@ -1,2 +1,41 @@
-<h2>info de la capsule de Elias</h2>
-<h2><%= capsule.title %></h2>
+  <div class="card">
+    <div class="card-content">
+      <div class="text-end">
+        <i class="fa-regular fa-rectangle-xmark"></i>
+      </div>
+      <h2 class="card-title"><%= capsule.title %></h2>
+
+      <div>
+          <%= image_tag("https://upload.wikimedia.org/wikipedia/commons/a/ae/20051018%C3%89picerie_d%27Am%C3%A9lie_Poulain_2.jpg", alt: "Photo de la capsule", class: "capsule-photo") %>
+      </div>
+
+      <div>
+        <%= cl_image_tag current_user.avatar.key, class: "capsule-avatar", alt: "User Avatar" %>
+        <span class="name"><%= current_user.name %></span>
+      </div>
+
+      <p class="card-description"><%= capsule.teasing %></p>
+
+      <div class="card-actions">
+        <button id="play-audio" class="fa-regular fa-circle-play"></button>
+      </div>
+
+      <div class="progress-bar">
+        <input type="range" id="audio-progress" value="0">
+      </div>
+
+      <div id="feedback-section" style="display: none;">
+        <%= render 'reviews' %>
+      </div>
+
+      <% if true%>
+        <div>
+        <i class="fa-solid fa-heart" style="color: #74C0FC;"></i>
+        </div>
+      <% else %>
+        <div>
+          <i class="fa-regular fa-heart"></i>
+        </div>
+      <% end %>
+    </div>
+  </div>
