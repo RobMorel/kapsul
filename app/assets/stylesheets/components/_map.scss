@@ -3,6 +3,14 @@
 }
 
 .mapboxgl-popup-content {
-  text-align: center;
-  font-family: "Open Sans", sans-serif;
+  width: 130%;
+  max-width: 400px;
+  background-color: #fdf6e3;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  transition: transform 0.3s;
+  height: 458px;
+  padding: 25px;
 }
