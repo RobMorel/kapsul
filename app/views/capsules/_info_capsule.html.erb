@@ -3,7 +3,12 @@
   <div>
     <%= image_tag("https://upload.wikimedia.org/wikipedia/commons/a/ae/20051018%C3%89picerie_d%27Am%C3%A9lie_Poulain_2.jpg", alt: "Photo de la capsule", class: "capsule-photo") %>
   </div>
-
+   <% if capsule.audio_url.present? %>
+     <audio controls>
+       <source src="<%= capsule.audio_url %>" type="audio/mpeg">
+       Your browser does not support the audio element.
+     </audio>
+   <% end %>
   <div>
     <%= cl_image_tag current_user.avatar.key, class: "capsule-avatar mb-2", alt: "User Avatar" %>
     <span class="name"><%= current_user.name %></span>

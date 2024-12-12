@@ -48,36 +48,35 @@ export default class extends Controller {
             recordButton.disabled = true; // Disable record button after recording is saved
           });
 
-          mediaRecorder.onstop = function () {
-            console.log("Last data to read (after MediaRecorder.stop() called).");
+          mediaRecorder.onstop = async function () {
+            console.log("Recording stopped. Preparing upload...");
 
-            const clipContainer = document.createElement("article");
-            const clipLabel = document.createElement("p");
-            const audio = document.createElement("audio");
-            const deleteButton = document.createElement("button");
-
-            clipContainer.classList.add("clip");
-            audio.setAttribute("controls", "");
-            deleteButton.textContent = "Delete & Re-record";
-            deleteButton.className = "delete";
-
-            clipLabel.textContent = "La capsule a bien été enregistrée :)";
-
-            clipContainer.appendChild(audio);
-            clipContainer.appendChild(clipLabel);
-            clipContainer.appendChild(deleteButton);
-            soundClips.appendChild(clipContainer);
-
+            // Créez un fichier audio à partir des chunks
             const blob = new Blob(chunks, { type: mediaRecorder.mimeType });
             chunks = [];
-            const audioURL = window.URL.createObjectURL(blob);
-            audio.src = audioURL;
+            const formData = new FormData();
+            formData.append("file", blob);
+            formData.append("upload_preset", "audio_capsules"); // Remplacez par votre preset Cloudinary
+            formData.append("folder", "user-recordings");
 
-            deleteButton.addEventListener("click", (e) => {
-              e.target.closest(".clip").remove();
-              recordButton.disabled = false; // Re-enable the record button when deleting a clip
-              recordButton.click(); // Automatically start a new recording
-            });
+            try {
+              // Envoyez l'audio à Cloudinary
+              const response = await fetch("https://api.cloudinary.com/v1_1/dkrxx2ews/video/upload", {
+                method: "POST",
+                body: formData,
+              });
+              const data = await response.json();
+              console.log("Audio uploaded to Cloudinary:", data.secure_url);
+
+              // Ajouter l'URL de Cloudinary dans un champ caché
+              const hiddenInput = document.createElement("input");
+              hiddenInput.type = "hidden";
+              hiddenInput.name = "capsule[audio_url]";
+              hiddenInput.value = data.secure_url;
+              document.querySelector("#capsule-form form").appendChild(hiddenInput);
+            } catch (error) {
+              console.error("Error uploading audio:", error);
+            }
           };
 
           mediaRecorder.ondataavailable = function (e) {
