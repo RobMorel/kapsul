@@ -1,39 +1,37 @@
 
-<h2 class="card-title"><%= capsule.title %></h2>
-  <div>
-    <%= image_tag("https://upload.wikimedia.org/wikipedia/commons/a/ae/20051018%C3%89picerie_d%27Am%C3%A9lie_Poulain_2.jpg", alt: "Photo de la capsule", class: "capsule-photo") %>
-  </div>
-   <% if capsule.audio_url.present? %>
-     <audio controls>
-       <source src="<%= capsule.audio_url %>" type="audio/mpeg">
-       Your browser does not support the audio element.
-     </audio>
-   <% end %>
-  <div>
-    <%= cl_image_tag current_user.avatar.key, class: "capsule-avatar mb-2", alt: "User Avatar" %>
-    <span class="name"><%= current_user.name %></span>
-  </div>
+<div data-controller="audio-reviews">
 
-  <p class="card-description"><%= capsule.teasing %></p>
+    <h2 class="card-title"><%= capsule.title %></h2>
+      <div>
+        <%= image_tag("https://upload.wikimedia.org/wikipedia/commons/a/ae/20051018%C3%89picerie_d%27Am%C3%A9lie_Poulain_2.jpg", alt: "Photo de la capsule", class: "capsule-photo") %>
 
-  <div class="card-actions">
-    <i class="fa-regular fa-circle-play" style="font-size: 2rem;"></i>
-  </div>
-
-  <div class="progress-bar">
-    <input type="range" id="audio-progress" value="0">
-  </div>
-
-  <div id="feedback-section" style="display: none;">
-      <%= render 'reviews' %>
-  </div>
-
-  <% if true%>
-    <div class="pt-2">
-      <i class="fa-solid fa-heart" style="font-size: 1.3rem;"></i>
-    </div>
-  <% else %>
-    <div class="pt-2">
-      <i class="fa-regular fa-heart" style="font-size: 1.3rem;"></i>
+        <%= cl_image_tag current_user.avatar.key, class: "capsule-avatar mb-2", alt: "User Avatar" %>
+        <span class="name"><%= current_user.name %></span>
       </div>
-  <% end %>
+
+      <% if capsule.audio_url.present? %>
+        <div>
+          <audio  data-audio-reviews-target="audio" data-action="ended->audio-reviews#audioEnded" controls>
+            <source src="<%= capsule.audio_url %>" type="audio/mpeg" >
+           Your browser does not support the audio element.
+          </audio>
+        </div>
+      <% end %>
+      <div>
+
+      <p class="card-description"><%= capsule.teasing %></p>
+
+      <div data-audio-reviews-target="feedbackSection"  class="d-none">
+          <%= render 'reviews' %>
+      </div>
+
+      <% if true%>
+        <div class="pt-2">
+          <i class="fa-solid fa-heart" style="font-size: 1.3rem;"></i>
+        </div>
+      <% else %>
+        <div class="pt-2">
+          <i class="fa-regular fa-heart" style="font-size: 1.3rem;"></i>
+          </div>
+      <% end %>
+</div>
