@@ -3,10 +3,12 @@
   width: 100%;
   height: 100%;
   background-color: #FFF5E1;
+  text-align: center;
 }
 // NOTE : colors of the canva need to be changed in the recorder.js file
 .visualizer {
-  width: 50%;
+  width: 80%;
+  height: 60px;
 }
 .recording {
   color: red;
@@ -14,4 +16,27 @@
 }
 .fa-microphone {
   border: none;
+}
+.record, .stop, .redo {
+  border: none;
+  background-color: #FFF5E1;
+}
+
+.main-controls {
+  width: 100%;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+.fa-microphone, .fa-stop {
+  font-size: 40px;
+  margin-right: 20px;
+}
+
+.fa-rotate-right {
+  font-size: 40px;
+}
+
+#buttons {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }

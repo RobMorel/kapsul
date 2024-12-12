@@ -21,8 +21,10 @@
     <div id="main-content" data-controller="menu" class="content">
       <%= render "shared/menu_left"%>
       <%= render "shared/menu_right"%>
-      <button class="btn left-burger" data-action="click->menu#openLeftMenu"><i class="fas fa-bars"></i></button>
-      <button class="btn right-burger" data-action="click->menu#openRightMenu"><i class="fas fa-bars"></i></button>
+      <% if on_home_page? %>
+        <button class="btn left-burger text-muted" data-target="menu.leftBurger" data-action="click->menu#openLeftMenu"><i class="fas fa-bars"></i></button>
+        <button class="btn right-burger text-muted" data-target="menu.rightBurger" data-action="click->menu#openRightMenu"><i class="fas fa-bars"></i></button>
+      <% end %>
     <%= render "shared/flashes" %>
 
     <%= yield %>

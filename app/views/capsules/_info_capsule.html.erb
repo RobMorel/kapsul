@@ -1,23 +1,25 @@
 
 <div data-controller="audio-reviews">
 
-    <h2 class="card-title"><%= capsule.title %></h2>
-      <div>
-        <%= image_tag("https://upload.wikimedia.org/wikipedia/commons/a/ae/20051018%C3%89picerie_d%27Am%C3%A9lie_Poulain_2.jpg", alt: "Photo de la capsule", class: "capsule-photo") %>
+<h2 class="card-title"><%= capsule.title %></h2>
+  <div>
+    <% if capsule.photo.attached? %>
+     <%= cl_image_tag capsule.photo.key, alt: "Photo de la capsule", class: "capsule-photo" %>
+    <% else %>
+      <%= image_tag "icons/Photo/logo-capsule.png", alt: "Default image", class: "capsule-photo" %>
+    <% end %>
+  </div>
+   <% if capsule.audio_url.present? %>
+     <audio controls>
+       <source src="<%= capsule.audio_url %>" type="audio/mpeg">
+       Your browser does not support the audio element.
+     </audio>
+   <% end %>
+  <div>
+    <%= cl_image_tag current_user.avatar.key, class: "capsule-avatar mb-2", alt: "User Avatar" %>
+    <span class="name"><%= current_user.name %></span>
+  </div>
 
-        <%= cl_image_tag current_user.avatar.key, class: "capsule-avatar mb-2", alt: "User Avatar" %>
-        <span class="name"><%= current_user.name %></span>
-      </div>
-
-      <% if capsule.audio_url.present? %>
-        <div>
-          <audio  data-audio-reviews-target="audio" data-action="ended->audio-reviews#audioEnded" controls>
-            <source src="<%= capsule.audio_url %>" type="audio/mpeg" >
-           Your browser does not support the audio element.
-          </audio>
-        </div>
-      <% end %>
-      <div>
 
       <p class="card-description"><%= capsule.teasing %></p>
 
