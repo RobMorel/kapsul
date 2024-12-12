@@ -17,35 +17,25 @@
 .fa-microphone {
   border: none;
 }
-.record {
+.record, .stop, .redo {
   border: none;
   background-color: #FFF5E1;
 }
-.stop {
-  border: none;
-  background-color: #FFF5E1;
-}
-.redo {
-  border: none;
-  background-color: #FFF5E1;
-}
+
 .main-controls {
   width: 100%;
   justify-content: space-evenly;
   padding: 20px;
 }
-.fa-microphone {
+.fa-microphone, .fa-stop {
   font-size: 40px;
   margin-right: 20px;
 }
-.fa-stop {
-  font-size: 40px;
-  margin-right: 20px;
-}
+
 .fa-rotate-right {
   font-size: 40px;
-
 }
+
 #buttons {
   margin-top: 30px;
   margin-bottom: 30px;
