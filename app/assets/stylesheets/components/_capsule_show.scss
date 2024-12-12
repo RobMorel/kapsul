@@ -98,8 +98,8 @@
 
 .capsule-avatar {
   flex: auto;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   margin-right: 10px;
 }
@@ -108,4 +108,12 @@
   flex: auto;
   font-size: 15px;
   color: #333;
+}
+
+.card-capsule {
+  background-color: #fff9e8;
+  border-radius:
+  15px;
+  max-width:
+  300px;
 }
