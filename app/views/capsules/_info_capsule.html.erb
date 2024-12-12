@@ -4,7 +4,7 @@
     <% if capsule.photo.attached? %>
      <%= cl_image_tag capsule.photo.key, alt: "Photo de la capsule", class: "capsule-photo" %>
     <% else %>
-      <%= image_tag "icons/Photo/logo-capsule.png", alt: "Default image", class: "default-photo" %>
+      <%= image_tag "icons/Photo/logo-capsule.png", alt: "Default image", class: "capsule-photo" %>
     <% end %>
   </div>
    <% if capsule.audio_url.present? %>

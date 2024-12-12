@@ -21,7 +21,7 @@ before_action :set_capsule, only: [:show]
     @capsule = Capsule.new(capsule_params)
     @capsule.user = current_user
     if @capsule.save
-      redirect_to capsule_path(@capsule), notice: "Capsule created successfully!"
+      redirect_to capsules_path(lat: @capsule.latitude, lng: @capsule.longitude, zoom: 12, openPopup: true), notice: "Capsule created successfully!"
     else
       render turbo_stream: turbo_stream.replace("capsule-form", partial: "capsules/form", locals: { capsule: @capsule })
     end
