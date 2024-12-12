@@ -1,4 +1,6 @@
 
+<div data-controller="audio-reviews">
+
 <h2 class="card-title"><%= capsule.title %></h2>
   <div>
     <% if capsule.photo.attached? %>
@@ -7,37 +9,36 @@
       <%= image_tag "icons/Photo/logo-capsule.png", alt: "Default image", class: "capsule-photo" %>
     <% end %>
   </div>
-   <% if capsule.audio_url.present? %>
-     <audio controls>
-       <source src="<%= capsule.audio_url %>" type="audio/mpeg">
-       Your browser does not support the audio element.
-     </audio>
-   <% end %>
-  <div>
+
+   <div>
     <%= cl_image_tag current_user.avatar.key, class: "capsule-avatar mb-2", alt: "User Avatar" %>
     <span class="name"><%= current_user.name %></span>
   </div>
 
-  <p class="card-description"><%= capsule.teasing %></p>
-
-  <div class="card-actions">
-    <i class="fa-regular fa-circle-play" style="font-size: 2rem;"></i>
+  <div>
+      <% if capsule.audio_url.present? %>
+        <div class="audio-centre">
+          <audio  data-audio-reviews-target="audio" data-action="ended->audio-reviews#audioEnded" controls>
+            <source src="<%= capsule.audio_url %>" type="audio/mpeg" >
+           Your browser does not support the audio element.
+          </audio>
+        </div>
+      <% end %>
   </div>
 
-  <div class="progress-bar">
-    <input type="range" id="audio-progress" value="0">
-  </div>
+      <p class="card-description"><%= capsule.teasing %></p>
 
-  <div id="feedback-section" style="display: none;">
-      <%= render 'reviews' %>
-  </div>
-
-  <% if true%>
-    <div class="pt-2">
-      <i class="fa-solid fa-heart" style="font-size: 1.3rem;"></i>
-    </div>
-  <% else %>
-    <div class="pt-2">
-      <i class="fa-regular fa-heart" style="font-size: 1.3rem;"></i>
+      <div data-audio-reviews-target="feedbackSection"  class="d-none">
+          <%= render 'reviews' %>
       </div>
-  <% end %>
+
+      <% if true%>
+        <div class="pt-2">
+          <i class="fa-solid fa-heart" style="font-size: 1.3rem;"></i>
+        </div>
+      <% else %>
+        <div class="pt-2">
+          <i class="fa-regular fa-heart" style="font-size: 1.3rem;"></i>
+          </div>
+      <% end %>
+</div>

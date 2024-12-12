@@ -1,11 +1,31 @@
   <div id="right-menu" class="side-menu">
     <button class="btn close-btn" data-action="click->menu#closeRightMenu">×</button>
-    <h2>Exploration</h2>
-    <ul class="categories">
-      <li>All</li>
-      <li>Pro</li>
-      <li>Gold</li>
-      <li>Tendances</li>
-      <li>Views</li>
+    <h2 class="text-center p-2 mt-3">Exploration</h2>
+
+  <div class="d-flex flex-wrap gap-2 p-3 custom-container">
+    <button type="button" class="btn btn-primary rounded-pill px-4 custom-active-btn">All</button>
+    <button type="button" class="btn btn-outline-secondary rounded-pill px-4 custom-default-btn">Category</button>
+    <button type="button" class="btn btn-outline-secondary rounded-pill px-4 custom-default-btn">Pro</button>
+    <button type="button" class="btn btn-outline-secondary rounded-pill px-4 custom-default-btn">Gold</button>
+    <button type="button" class="btn btn-outline-secondary rounded-pill px-4 custom-default-btn">Tendances</button>
+    <button type="button" class="btn btn-outline-secondary rounded-pill px-4 custom-default-btn">Views</button>
+  </div>
+
+    <ul class="list-unstyled">
+      <li mt-2>
+        <%= render "shared/capsule_design" %>
+      </li>
+      <li class="mt-2">
+        <%= render "shared/capsule_design" %>
+      </li>
+      <li class="mt-2">
+        <%= render "shared/capsule_design" %>
+      </li>
+      <li class="mt-2">
+        <%= render "shared/capsule_design" %>
+      </li>
+      <li class="mt-2">
+        <%= render "shared/capsule_design" %>
+      </li>
     </ul>
   </div>

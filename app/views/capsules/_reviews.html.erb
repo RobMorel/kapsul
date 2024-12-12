@@ -1,6 +1,12 @@
-<div>
-  <button id="replay-button" class="fa-solid fa-rotate-left"></button>
-  <textarea class="feedback-container" id="feedback" placeholder="reviews"></textarea>
+<div class="centre">
+  <button   data-action="click->audio-reviews#replayAudio" data-audio-reviews-target="replayButton">
+          <i class="fa-solid fa-rotate-left"></i>
+  </button>
+</div>
+
+<div class="feedback-container" >
+  <textarea id="feedback" placeholder="reviews"></textarea>
+</div>
   <% if true%>
         <div>
         <i class="fa-solid fa-heart" style="color: #74C0FC;"></i>

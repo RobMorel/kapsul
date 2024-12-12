@@ -1,0 +1,25 @@
+.centre{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feedback-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10px;
+  font-size: 25px;
+}
+
+.fa-rotate-left{
+  border: none;
+
+}
+
+.centre button{
+  border: none;
+  background-color: #fdf6e3;
+  font-size: 20px;
+}
