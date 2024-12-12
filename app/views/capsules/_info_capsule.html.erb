@@ -10,7 +10,7 @@
       </div>
 
       <% if capsule.audio_url.present? %>
-        <div>
+        <div class="audio-centre">
           <audio  data-audio-reviews-target="audio" data-action="ended->audio-reviews#audioEnded" controls>
             <source src="<%= capsule.audio_url %>" type="audio/mpeg" >
            Your browser does not support the audio element.
