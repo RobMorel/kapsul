@@ -21,6 +21,10 @@
       <h3>Step 3: Media & Location</h3>
       <%= f.input :address, required: true %>
 
+      <div class="form-group">
+        <%= f.input :photo, as: :file, required: true %>
+      </div>
+
       <button type="button" class="btn btn-secondary" data-action="form-steps#previousStep">Back to Step 2</button>
       <%= f.button :submit, "Submit", class: "btn btn-success" %>
     </div>
