@@ -46,17 +46,10 @@
   margin-bottom: 15px;
 }
 
-.default-photo {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin-bottom: 15px;
-}
-
 .capsule-avatar {
   flex: auto;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   margin-right: 10px;
 }
@@ -67,10 +60,14 @@
   color: #333;
 }
 
+.audio-centre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .card-capsule {
   background-color: #fff9e8;
-  border-radius:
-  15px;
-  max-width:
-  300px;
+  border-radius:15px;
+  max-width:300px;
 }

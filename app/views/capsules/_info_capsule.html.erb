@@ -9,17 +9,22 @@
       <%= image_tag "icons/Photo/logo-capsule.png", alt: "Default image", class: "capsule-photo" %>
     <% end %>
   </div>
-   <% if capsule.audio_url.present? %>
-     <audio controls>
-       <source src="<%= capsule.audio_url %>" type="audio/mpeg">
-       Your browser does not support the audio element.
-     </audio>
-   <% end %>
-  <div>
+
+   <div>
     <%= cl_image_tag current_user.avatar.key, class: "capsule-avatar mb-2", alt: "User Avatar" %>
     <span class="name"><%= current_user.name %></span>
   </div>
 
+  <div>
+      <% if capsule.audio_url.present? %>
+        <div class="audio-centre">
+          <audio  data-audio-reviews-target="audio" data-action="ended->audio-reviews#audioEnded" controls>
+            <source src="<%= capsule.audio_url %>" type="audio/mpeg" >
+           Your browser does not support the audio element.
+          </audio>
+        </div>
+      <% end %>
+  </div>
 
       <p class="card-description"><%= capsule.teasing %></p>
 
