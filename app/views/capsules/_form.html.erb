@@ -2,8 +2,7 @@
   <%= simple_form_for @capsule do |f| %>
     <div data-form-steps-target="step" class="step">
       <h3>Step 1: Recording </h3>
-      <%= f.input :title, required: true %>
-
+      <%= render "record" %>
       <%= link_to "Back to Capsules", capsules_path, class: "btn btn-secondary" %>
       <button type="button" class="btn btn-primary" data-action="form-steps#nextStep">Continue</button>
     </div>
@@ -20,7 +19,6 @@
 
     <div data-form-steps-target="step" class="step d-none">
       <h3>Step 3: Media & Location</h3>
-      <%= f.input :title, required: true %>
       <%= f.input :address, required: true %>
 
       <button type="button" class="btn btn-secondary" data-action="form-steps#previousStep">Back to Step 2</button>

@@ -37,7 +37,7 @@ before_action :set_capsule, only: [:show]
   end
 
   def capsule_params
-    params.require(:capsule).permit(:audio, :title, :teasing, :category, :image, :address)
+    params.require(:capsule).permit(:title, :teasing, :category, :image, :address, :audio_url)
   end
 
 end
