@@ -32,7 +32,7 @@
   font-size: 14px;
   line-height: 1.6;
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .right {
@@ -40,15 +40,18 @@
 }
 
 
-.capsule-photo {
+.capsule-photo img {
   width: 100%;
   height: auto;
   border-radius: 10px;
-  margin-bottom: 15px;
+  object-fit: cover;
+  max-height: 220px;
+  display: block;
 }
 
 .capsule-avatar {
   flex: auto;
+  object-fit: cover;
   width: 40px;
   height: 40px;
   border-radius: 50%;
