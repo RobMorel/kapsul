@@ -34,7 +34,32 @@
             <%= f.input :teasing, as: :text, required: true %>
           </div>
           <div class="form-group mb-3">
-            <%= f.input :category, label: "Category", required: true %>
+              <%= f.collection_select :category,
+                          [['Histoire', 'histoire'],
+                           ['Art', 'art'],
+                           ['Love', 'love'],
+                           ['Architecture', 'architecture'],
+                           ['Temporaire', 'temporaire'],
+                           ['Cachée', 'cachée'],
+                           ['Horreur', 'horreur'],
+                           ['Légende', 'légende'],
+                           ['Science', 'science'],
+                           ['Technologie', 'technologie'],
+                           ['Nature', 'nature'],
+                           ['Fantasy', 'fantasy'],
+                           ['Mystère', 'mystère'],
+                           ['Aventure', 'aventure'],
+                           ['Comédie', 'comédie'],
+                           ['Culture', 'culture'],
+                           ['Histoire vraie', 'histoire_vraie'],
+                           ['Émotion', 'emotion'],
+                           ['Futurisme', 'futurisme'],
+                           ['Mythologie', 'mythologie'],
+                           ['Philosophie', 'philosophie']],
+                          :second,
+                          :first,
+                          { label: "Category", prompt: "Sélectionnez une catégorie", required: true },
+                          { class: "form-control" } %>
           </div>
 
           <div class="d-flex justify-content-between mt-3">
