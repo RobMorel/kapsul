@@ -29,16 +29,13 @@
       <p class="card-description"><%= capsule.teasing %></p>
 
       <div data-audio-reviews-target="feedbackSection"  class="d-none">
-          <%= render 'reviews' %>
+          <%= render 'reviews', capsule:capsule %>
       </div>
 
-      <% if true%>
-        <div class="pt-2">
-          <i class="fa-solid fa-heart" style="font-size: 1.3rem;"></i>
-        </div>
-      <% else %>
-        <div class="pt-2">
-          <i class="fa-regular fa-heart" style="font-size: 1.3rem;"></i>
-          </div>
-      <% end %>
+      <div class="likes-container">
+         <span id="likes-count-<%= capsule.id %>">
+            <%= capsule.likes.count %>
+            <i class="fa-solid fa-heart" style="color: #74C0FC;"></i>
+          </span>
+      </div>
 </div>

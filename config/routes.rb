@@ -14,6 +14,6 @@ Rails.application.routes.draw do
 
   resources :capsules, except: [:index] do
     resources :comments, only: [:create, :update, :destroy]
-    resources :likes, only: [:update]
+    resource :likes, only: [:create, :destroy]
   end
 end

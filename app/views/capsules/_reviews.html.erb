@@ -1,19 +1,19 @@
 <div class="centre">
-  <button   data-action="click->audio-reviews#replayAudio" data-audio-reviews-target="replayButton">
+  <button  class="return" data-action="click->audio-reviews#replayAudio" data-audio-reviews-target="replayButton" style="display: none;">
           <i class="fa-solid fa-rotate-left"></i>
   </button>
 </div>
 
+<button data-audio-reviews-target="likeBtn" data-action="click->audio-reviews#like" data-url=" <%=capsule_likes_path(capsule)%>">
+ <i class="fa-solid fa-heart" style="color: #74C0FC;"></i>
+</button>
+<div data-audio-reviews-target="likeCount">
+<%= capsule.likes.count %>
+</div>
+<button data-audio-reviews-target="dislikeBtn" data-action="click->audio-reviews#dislike" data-url=" <%=capsule_likes_path(capsule)%>">
+  <i class="fa-solid fa-heart" style="color: #74C0FC;"></i>
+</button>
+
 <div class="feedback-container" >
   <textarea id="feedback" placeholder="reviews"></textarea>
-</div>
-  <% if true%>
-        <div>
-        <i class="fa-solid fa-heart" style="color: #74C0FC;"></i>
-        </div>
-      <% else %>
-        <div>
-          <i class="fa-regular fa-heart"></i>
-        </div>
-      <% end %>
 </div>
