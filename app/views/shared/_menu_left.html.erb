@@ -1,21 +1,15 @@
   <div id="left-menu" class="side-menu">
-    <button class="btn close-btn" data-action="click->menu#closeLeftMenu">×</button>
+    <button class="btn close-btn text-muted" data-action="click->menu#closeLeftMenu"><i class="fa-solid fa-angles-left"></i></button>
     <h2 class="text-center p-2 mt-3">My capsules</h2>
     <ul class="list-unstyled">
-      <li>
-        <%= render "shared/capsule_design" %>
-      </li>
-      <li class="mt-2">
-        <%= render "shared/capsule_design" %>
-      </li>
-      <li class="mt-2">
-        <%= render "shared/capsule_design" %>
-      </li>
-      <li class="mt-2">
-        <%= render "shared/capsule_design" %>
-      </li>
-      <li class="mt-2">
-        <%= render "shared/capsule_design" %>
-      </li>
+      <% if user_capsules.present? %>
+        <% user_capsules.each do |capsule| %>
+          <li class="mt-2">
+            <%= render "shared/capsule_design", capsule: capsule %>
+          </li>
+        <% end %>
+      <% else %>
+        <li class="text-center mt-3">You have not created any capsules yet.</li>
+      <% end %>
     </ul>
   </div>

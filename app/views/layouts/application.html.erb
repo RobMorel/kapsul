@@ -19,11 +19,11 @@
 
   <body>
     <div id="main-content" data-controller="menu" class="content">
-      <%= render "shared/menu_left"%>
-      <%= render "shared/menu_right"%>
       <% if on_home_page? %>
-        <button class="btn left-burger text-muted" data-target="menu.leftBurger" data-action="click->menu#openLeftMenu"><i class="fas fa-bars"></i></button>
-        <button class="btn right-burger text-muted" data-target="menu.rightBurger" data-action="click->menu#openRightMenu"><i class="fas fa-bars"></i></button>
+        <%= render "shared/menu_left"%>
+        <%= render "shared/menu_right", capsules: @capsules%>
+        <button class="btn left-burger text-muted" data-target="menu.leftBurger" data-action="click->menu#openLeftMenu"><i class="fa-solid fa-angles-right"></i></button>
+        <button class="btn right-burger text-muted" data-target="menu.rightBurger" data-action="click->menu#openRightMenu"><i class="fa-solid fa-angles-left"></i></button>
       <% end %>
     <%= render "shared/flashes" %>
 

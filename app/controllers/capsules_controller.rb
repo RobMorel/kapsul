@@ -1,6 +1,5 @@
 class CapsulesController < ApplicationController
-
-before_action :set_capsule, only: [:show]
+  before_action :set_user_capsules
 
   def index
     @capsules = Capsule.all
@@ -21,23 +20,19 @@ before_action :set_capsule, only: [:show]
     @capsule = Capsule.new(capsule_params)
     @capsule.user = current_user
     if @capsule.save
-      redirect_to root_path(lat: @capsule.latitude, lng: @capsule.longitude, zoom: 12, openPopup: true), notice: "Capsule created successfully!"
+      redirect_to root_path(lat: @capsule.latitude, lng: @capsule.longitude, zoom: 12, openPopup: true)
     else
       render turbo_stream: turbo_stream.replace("capsule-form", partial: "capsules/form", locals: { capsule: @capsule })
     end
   end
 
-  def show
+  def set_user_capsules
+    @user_capsules = current_user.capsules
   end
 
   private
 
-  def set_capsule
-    @capsule = Capsule.find(params[:id])
-  end
-
   def capsule_params
     params.require(:capsule).permit(:title, :teasing, :category, :photo, :address, :audio_url)
   end
-
 end
