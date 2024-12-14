@@ -26,11 +26,11 @@ class CapsulesController < ApplicationController
     end
   end
 
+  private
+
   def set_user_capsules
     @user_capsules = current_user.capsules
   end
-
-  private
 
   def capsule_params
     params.require(:capsule).permit(:title, :teasing, :category, :photo, :address, :audio_url)
