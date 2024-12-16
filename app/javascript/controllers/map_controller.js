@@ -14,16 +14,34 @@ export default class extends Controller {
     mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: 'mapbox://styles/mapbox/streets-v11',
+      style: 'mapbox://styles/rob738/cm4nai60l004d01qtaw80cp3z',
     });
   this.#addMarkersToMap();
   this.#fitMapToMarkers();
+
+      // Add geolocate control to the map.
+      this.map.addControl(
+        new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            // When active the map will receive updates to the device's location as it changes.
+            trackUserLocation: true,
+            // Draw an arrow next to the location dot to indicate which direction the device is heading.
+            showUserHeading: true,
+            showUserLocation: true
+        })
+    );
   }
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
-      const mrker = new mapboxgl.Marker().setLngLat([marker.lng, marker.lat]).setPopup(popup).addTo(this.map)
+
+      const customMarker = document.createElement("div");
+      customMarker.innerHTML = marker.marker_html;
+
+      const mrker = new mapboxgl.Marker(customMarker).setLngLat([marker.lng, marker.lat]).setPopup(popup).addTo(this.map)
       if (this.params.get("openPopup") && (this.params.get("lat") == marker.lat) && (this.params.get("lng") == marker.lng) ) {
         mrker.togglePopup()
       }
@@ -50,6 +68,7 @@ export default class extends Controller {
       this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
     }
   }
+
 
   get params() {
     return new URL(window.location.href).searchParams
