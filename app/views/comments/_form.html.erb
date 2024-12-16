@@ -1,0 +1,34 @@
+<div data-controller="comments">
+
+  <button type="button" class="btn btn-info" id="show-comments"
+    data-action="click->comments#toggleFrame"
+    data-comments-capsule-id="<%= capsule.id %>"><i class="bi bi-chat"></i>
+  </button>
+
+  <div class="comments-popup hidden" data-comments-target="frame">
+    <div class="popup-header">
+      <button
+        class="btn-close"
+        data-action="click->comments#closeFrame">
+        &times;
+      </button>
+    </div>
+    <div class="popup-body">
+      <!-- Liste des commentaires -->
+      <div class="comments-list" data-comments-target="list">
+        <!-- Les commentaires seront injectés ici -->
+      </div>
+
+      <div class="comments-form-container">
+          <input type="hidden" name="comment[comment]" value="" data-comments-target="hiddenInput" />
+          <textarea data-comments-target="input" maxlength="255" placeholder="Write a comment..."></textarea>
+      <form data-comments-target="form"
+          data-comments-capsule-id="<%= capsule.id %>"
+          data-action="submit->comments#submitComment">
+          <!-- Champ caché pour envoyer la valeur du commentaire -->
+          <button type="submit" class="btn btn-info" id="send-comments"><i class="bi bi-send"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

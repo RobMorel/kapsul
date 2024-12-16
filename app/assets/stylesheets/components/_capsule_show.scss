@@ -75,3 +75,18 @@
   border-radius:15px;
   max-width:300px;
 }
+
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#button_like button{
+  border: none;
+  background-color: #fff9e8;
+}

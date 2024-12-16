@@ -11,9 +11,10 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :users
+  resources :likes, only: [:destroy]
 
-  resources :capsules, except: [:index, :show] do
-    resources :comments, only: [:create, :update, :destroy]
-    resources :likes, only: [:update]
+  resources :capsules, except: [:index] do
+    resources :comments, only: [:index, :create]
+    resources :likes, only: [:create]
   end
 end
