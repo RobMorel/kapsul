@@ -32,8 +32,8 @@
     <div data-audio-reviews-target="feedbackSection">
           <textarea class="form-control" id="reviewInput" rows="3" placeholder="Your feedback" style="height: 48px; border-radius: 5px;"></textarea>
     </div>
-    <%= button_to capsule_likes_path(capsule), method: :put, remote: true, class: "btn btn-light btn-sm" do %>
-      <i class="fa fa-heart text-danger me-1"></i>
-      <span id="likes-count-<%= capsule.id %>"><%= capsule.likes.count %></span>
 
-    <% end %>
+    <div>
+      <% like = capsule.likes.find_by(user: current_user)  %>
+      <%= render "button_like", capsule: capsule, like: like%>
+    </div>
