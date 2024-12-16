@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :users
 
   resources :capsules, except: [:index] do
-    resources :comments, only: [:create, :update, :destroy]
+    resources :comments, only: [:index, :create]
     resources :likes, only: [:update]
   end
 end
