@@ -2,15 +2,33 @@ class CapsulesController < ApplicationController
   before_action :set_user_capsules
 
   def index
-    @capsules = Capsule.all
-    @markers = Capsule.geocoded.map do |capsule|
+
+    # We show the capsules depending their category. If no filter selected, we show all
+    if params[:category].present? && params[:category] != "all"
+      @capsules = Capsule.where(category: params[:category])
+    else
+      @capsules = Capsule.all
+    end
+
+    @markers = @capsules.geocoded.map do |capsule|
       {
         lat: capsule.latitude,
         lng: capsule.longitude,
-        infoWindow: render_to_string(partial: "info_capsule", locals: { capsule: capsule }),
-        marker_html: render_to_string(partial: "marker", locals: { capsule: capsule})
+        infoWindow: render_to_string(partial: "capsules/info_capsule", formats: [:html], locals: { capsule: capsule }),
+        marker_html: render_to_string(partial: "capsules/marker", formats: [:html], locals: { capsule: capsule})
       }
     end
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream {
+        render turbo_stream: [
+          turbo_stream.replace("map", partial: "capsules/map", locals: { markers: @markers }),
+          turbo_stream.replace("capsules_list", partial: "capsules/capsules_list", locals: { capsules: @capsules })
+        ]
+      }
+    end
+
   end
 
   def new
