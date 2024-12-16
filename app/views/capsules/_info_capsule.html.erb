@@ -7,9 +7,15 @@
   <% end %>
 </div>
 
-<div>
-  <%= cl_image_tag current_user.avatar.key, class: "capsule-avatar mb-2", alt: "User Avatar" %>
-  <span class="name"><%= current_user.name %></span>
+<div class="content">
+  <div>
+    <%= cl_image_tag current_user.avatar.key, class: "capsule-avatar mb-2", alt: "User Avatar" %>
+    <span class="name"><%= current_user.name %></span>
+  </div>
+  <div class="button-right">
+    <% like = capsule.likes.find_by(user: current_user)  %>
+    <%= render "button_like", capsule: capsule, like: like%>
+  </div>
 </div>
 
 <div>
@@ -23,31 +29,9 @@
         <source src="<%= capsule.audio_url %>" type="audio/mpeg" >
         Your browser does not support the audio element.
       </audio>
-  <h2 class="card-title"><%= capsule.title %></h2>
-    <div class="capsule-photo mb-3">
-      <% if capsule.photo.attached?  %>
-        <%= cl_image_tag capsule.photo.key, alt: "Photo de la capsule" %>
-      <% else %>
-        <%= image_tag "icons/Photo/logo-capsule.png", alt: "Default image"%>
-      <% end %>
-    </div>
-
-    <div>
-      <%= cl_image_tag capsule.user.avatar.key, class: "capsule-avatar mb-2", alt: "User Avatar" %>
-      <span class="name"><%= capsule.user.name %></span>
-    </div>
   <% end %>
 </div>
 
 <div>
   <%= render 'comments/form', capsule: capsule %>
-</div>
-  
-<div>
- <p class="card-description"><%= capsule.teasing %></p>
-</div>
-
-<div>
-  <% like = capsule.likes.find_by(user: current_user)  %>
-  <%= render "button_like", capsule: capsule, like: like%>
 </div>
