@@ -2,7 +2,6 @@ class CapsulesController < ApplicationController
   before_action :set_user_capsules
 
   def index
-
     # We show the capsules depending their category. If no filter selected, we show all
     if params[:category].present? && params[:category] != "all"
       @capsules = Capsule.where(category: params[:category])
@@ -14,8 +13,8 @@ class CapsulesController < ApplicationController
       {
         lat: capsule.latitude,
         lng: capsule.longitude,
-        infoWindow: render_to_string(partial: "capsules/info_capsule", formats: [:html], locals: { capsule: capsule }),
-        marker_html: render_to_string(partial: "capsules/marker", formats: [:html], locals: { capsule: capsule})
+        infoWindow: render_to_string(partial: "info_capsule", formats: [:html], locals: { capsule: capsule }),
+        marker_html: render_to_string(partial: "marker", formats: [:html], locals: { capsule: capsule})
       }
     end
 
@@ -23,8 +22,8 @@ class CapsulesController < ApplicationController
       format.html
       format.turbo_stream {
         render turbo_stream: [
-          turbo_stream.replace("map", partial: "capsules/map", locals: { markers: @markers }),
-          turbo_stream.replace("capsules_list", partial: "capsules/capsules_list", locals: { capsules: @capsules })
+          turbo_stream.replace("map", partial: "map", locals: { markers: @markers }),
+          turbo_stream.replace("capsules_list", partial: "capsules_list", locals: { capsules: @capsules })
         ]
       }
     end
@@ -39,7 +38,8 @@ class CapsulesController < ApplicationController
     @capsule = Capsule.new(capsule_params)
     @capsule.user = current_user
     if @capsule.save
-      redirect_to root_path(lat: @capsule.latitude, lng: @capsule.longitude, zoom: 12, openPopup: true)
+      redirect_to root_path(format: :html, lat: @capsule.latitude, lng: @capsule.longitude, zoom: 12, openPopup: true), status: :see_other
+      # redirect_to root_path(lat: @capsule.latitude, lng: @capsule.longitude, zoom: 12, openPopup: true), status: :see_other
     else
       render turbo_stream: turbo_stream.replace("capsule-form", partial: "capsules/form", locals: { capsule: @capsule })
     end
