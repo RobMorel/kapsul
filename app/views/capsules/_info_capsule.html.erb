@@ -1,6 +1,6 @@
   <h2 class="card-title"><%= capsule.title %></h2>
     <div class="capsule-photo mb-3">
-      <% if capsule.photo.attached? %>
+      <% if capsule.photo.attached?  %>
         <%= cl_image_tag capsule.photo.key, alt: "Photo de la capsule" %>
       <% else %>
         <%= image_tag "icons/Photo/logo-capsule.png", alt: "Default image"%>
@@ -27,16 +27,13 @@
       <% end %>
 
 
-      <div data-audio-reviews-target="feedbackSection"  class="d-none">
-          <%= render 'reviews' %>
-      </div>
+
     </div>
-      <% if true%>
-        <div class="pt-2">
-          <i class="fa-solid fa-heart" style="font-size: 1.3rem;"></i>
-        </div>
-      <% else %>
-        <div class="pt-2">
-          <i class="fa-regular fa-heart" style="font-size: 1.3rem;"></i>
-          </div>
-      <% end %>
+    <div data-audio-reviews-target="feedbackSection">
+          <textarea class="form-control" id="reviewInput" rows="3" placeholder="Your feedback" style="height: 48px; border-radius: 5px;"></textarea>
+    </div>
+
+    <div>
+      <% like = capsule.likes.find_by(user: current_user)  %>
+      <%= render "button_like", capsule: capsule, like: like%>
+    </div>

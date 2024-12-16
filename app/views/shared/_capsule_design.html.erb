@@ -1,7 +1,7 @@
 <%= link_to root_path(lat: capsule.latitude, lng: capsule.longitude, zoom: 12, openPopup: true), class: "text-decoration-none" do %>
   <div class="d-flex align-items-center border-0 lign-items-center p-2 shadow-sm card-capsule">
     <div>
-      <%= cl_image_tag capsule.photo.key, alt: capsule.title, class:"capsule-avatar" %>
+      <%= cl_image_tag(capsule.photo.key, alt: capsule.title, class: "capsule-avatar") if capsule.photo&.key %>
     </div>
 
     <div class="ms-3">
