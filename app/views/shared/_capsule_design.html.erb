@@ -1,14 +1,16 @@
-<div class="d-flex align-items-center border-0 lign-items-center p-2 shadow-sm card-capsule">
+<%= link_to root_path(lat: capsule.latitude, lng: capsule.longitude, zoom: 12, openPopup: true), class: "text-decoration-none" do %>
+  <div class="d-flex align-items-center border-0 lign-items-center p-2 shadow-sm card-capsule">
+    <div>
+      <%= cl_image_tag(capsule.photo.key, alt: capsule.title, class: "capsule-avatar") if capsule.photo&.key %>
+    </div>
 
-  <div>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1280px-Image_created_with_a_mobile_phone.png" alt="L'épicerie d'Amélie" class="capsule-avatar">
-  </div>
-
-  <div class="ms-3">
-    <h6 class="mb-0 fw-bold" style="color: #333;">L'épicerie d'Amélie</h6>
-    <div class="d-flex align-items-center text-muted" style="font-size: 14px;">
-      <i class="fa fa-heart text-danger me-1"></i>
-      <span>12.300</span>
+    <div class="ms-3">
+      <h6 class="mb-1 fw-bold" style="color: #333;"><%= capsule.title %></h6>
+      <div class="d-flex align-items-center text-muted" style="font-size: 14px;">
+        <i class="fa fa-heart text-danger me-1"></i>
+        <span>12.300</span>
+        <small class="ms-2">Created at: <%= l(capsule.created_at, format: :short) %></small>
+      </div>
     </div>
   </div>
-</div>
+<% end %>

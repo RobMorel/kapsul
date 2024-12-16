@@ -4,7 +4,7 @@ class Capsule < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 50 }
   validates :teasing, presence: true, length: { maximum: 200 }
   validates :category, presence: true
   validates :address, presence: true

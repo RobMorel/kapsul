@@ -1,0 +1,13 @@
+<div id="button_like">
+    <% if like  %>
+     <%= button_to like_path(like), method: :delete do %>
+        <i class="fa-solid fa-heart" style="color: #ff4013;"></i>
+      <% end %>
+    <% else %>
+      <%= button_to capsule_likes_path(capsule), method: :post do %>
+        <i class="fa-regular fa-heart"></i>
+      <% end %>
+
+    <% end %>
+  <span><%= capsule.likes.count %> Likes</span>
+</div>
