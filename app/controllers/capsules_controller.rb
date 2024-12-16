@@ -9,6 +9,7 @@ before_action :set_capsule, only: [:show]
         lat: capsule.latitude,
         lng: capsule.longitude,
         infoWindow: render_to_string(partial: "info_capsule", locals: { capsule: capsule }),
+        marker_html: render_to_string(partial: "marker", locals: { capsule: capsule})
       }
     end
   end
