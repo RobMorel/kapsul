@@ -1,9 +1,0 @@
-<%= turbo_frame_tag "capsules_list" do %>
-    <ul class="list-unstyled">
-      <% capsules.each do |capsule| %>
-        <li class="mt-2">
-          <%= render "shared/capsule_design", capsule: capsule %>
-      </li>
-        <% end %>
-    </ul>
-<% end %>
