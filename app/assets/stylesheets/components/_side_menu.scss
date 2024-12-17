@@ -50,12 +50,38 @@
 .left-burger,
 .right-burger {
   position: fixed;
-  top: 20px;
+  top: 50px;
   z-index: 1100;
   background: none;
   border: none;
   font-size: 2rem;
   cursor: pointer;
+  background-color: #ffffffdd;
+  border: none; /* Pas de bordure */
+  border-radius: 8px; /* Coins arrondis */
+  padding: 0px; /* Espacement interne */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 50px; /* Largeur du carré */
+  height: 50px; /* Hauteur identique à la largeur */
+  display: flex; /* Utilisé pour centrer le contenu */
+  justify-content: center; /* Centrage horizontal du contenu */
+  align-items: center;
+}
+
+.left-burger i,
+.right-burger i {
+  color: #000000f4; /* Couleur blanche */
+}
+
+.left-burger:hover,
+.right-burger:hover {
+  background-color: rgb(255, 255, 255);
+  transform: scale(1.1);
+}
+
+.left-burger:active,
+.right-burger:active {
+  background-color: #b7b7b7;
 }
 
 .left-burger {
