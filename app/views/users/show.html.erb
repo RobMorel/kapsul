@@ -1,0 +1,19 @@
+
+<div class="profile-container">
+  <div class="space-container ">
+    <%= cl_image_tag current_user.avatar.key, class: "avatar", alt: "User Avatar" %>
+  </div>
+  <div class="space-container ">
+    <h1 class="profile-name"><%= @user.name %></h1>
+  </div>
+
+  <div class="space-container " >
+    <h3>General information</h3>
+    <p><strong>Email:</strong> <%= @user.email %></p>
+    <p><strong> Registration on:</strong> <%= @user.created_at.strftime("%d %B %Y") %></p>
+  </div>
+  <div class="space-container " >
+  <%= link_to "Modifier mon profil", edit_user_path(@user), class: "btn btn-outline-warning" %>
+  <%= link_to "Cancel", root_path, class: "btn btn-outline-warning" %>
+  </div>
+</div>
