@@ -1,4 +1,4 @@
-<%= turbo_frame_tag "map" do %>
+<%= turbo_frame_tag "map", style:"width: 100vw;" do %>
   <div style='width: 100%; height: 100vh;'
       data-controller="map"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
