@@ -9,7 +9,7 @@
 
 <div class="content">
   <div>
-    <%= cl_image_tag current_user.avatar.key, class: "capsule-avatar mb-2", alt: "User Avatar" %>
+    <%= cl_image_tag(current_user.avatar.key.presence || 'icons/Photo/logo-capsule.png', class: "capsule-avatar mb-2", alt: "User Avatar") %>
     <span class="name"><%= current_user.name %></span>
   </div>
   <div class="button-right">
