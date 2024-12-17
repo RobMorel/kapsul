@@ -20,6 +20,9 @@
   </head>
 
   <body>
+    <div class="logo-back">
+      <%= render "shared/logo_centre"%>
+    </div>
     <div id="main-content" data-controller="menu" class="content">
       <% if on_home_page? %>
         <%= render "shared/menu_left", user_capsules: @user_capsules%>
@@ -28,6 +31,7 @@
         <button class="btn right-burger text-muted" data-target="menu.rightBurger" data-action="click->menu#openRightMenu"><i class="bi bi-people"></i></button>
       <% end %>
     <%= render "shared/flashes" %>
+
 
     <%= yield %>
     <%= render "shared/navbar" %>
