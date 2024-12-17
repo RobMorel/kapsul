@@ -1,5 +1,8 @@
 <div style='width: 100%; height: 100vh;'
-    data-controller="map"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-    data-map-markers-value="<%= @markers.to_json %>">
+  data-controller="map"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+  data-map-target="map"
+  data-map-image-path-value="<%= asset_url('icons/Photo/map_logo.png') %>"
+  data-map-markers-value="<%= @markers.to_json %>">
+   <%= render "shared/navbar" %>
 </div>
