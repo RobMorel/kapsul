@@ -3,7 +3,7 @@
   <% if capsule.photo.attached? %>
     <%= cl_image_tag capsule.photo.key, alt: "Photo de la capsule" %>
   <% else %>
-    <%= image_tag "icons/Photo/logo-capsule.png", alt: "Default image"%>
+    <%= image_tag "icons/Photo/logo-capsule.png", alt: "Default image" %>
   <% end %>
 </div>
 
@@ -16,38 +16,22 @@
   <p class="card-description"><%= capsule.teasing %></p>
 </div>
 
-<div data-controller="audio-reviews">
-  <% if capsule.audio_url.present? %>
+<% if capsule.audio_url.present? %>
+  <div data-controller="audio-reviews">
     <div class="audio-centre">
-      <audio  data-audio-reviews-target="audio" data-action="ended->audio-reviews#audioEnded" controls>
-        <source src="<%= capsule.audio_url %>" type="audio/mpeg" >
+      <audio data-audio-reviews-target="audio" data-action="ended->audio-reviews#audioEnded" controls>
+        <source src="<%= capsule.audio_url %>" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
-  <h2 class="card-title"><%= capsule.title %></h2>
-    <div class="capsule-photo mb-3">
-      <% if capsule.photo.attached?  %>
-        <%= cl_image_tag capsule.photo.key, alt: "Photo de la capsule" %>
-      <% else %>
-        <%= image_tag "icons/Photo/logo-capsule.png", alt: "Default image"%>
-      <% end %>
     </div>
-
-    <div>
-      <%= cl_image_tag capsule.user.avatar.key, class: "capsule-avatar mb-2", alt: "User Avatar" %>
-      <span class="name"><%= capsule.user.name %></span>
-    </div>
-  <% end %>
-</div>
+  </div>
+<% end %>
 
 <div>
   <%= render 'comments/form', capsule: capsule %>
 </div>
-  
-<div>
- <p class="card-description"><%= capsule.teasing %></p>
-</div>
 
 <div>
-  <% like = capsule.likes.find_by(user: current_user)  %>
-  <%= render "button_like", capsule: capsule, like: like%>
+  <% like = capsule.likes.find_by(user: current_user) %>
+  <%= render "button_like", capsule: capsule, like: like %>
 </div>

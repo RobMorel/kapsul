@@ -24,8 +24,8 @@
       <% if on_home_page? %>
         <%= render "shared/menu_left", user_capsules: @user_capsules%>
         <%= render "shared/menu_right", capsules: @capsules%>
-        <button class="btn left-burger text-muted" data-target="menu.leftBurger" data-action="click->menu#openLeftMenu"><i class="fa-solid fa-angles-right"></i></button>
-        <button class="btn right-burger text-muted" data-target="menu.rightBurger" data-action="click->menu#openRightMenu"><i class="fa-solid fa-angles-left"></i></button>
+        <button class="btn left-burger text-muted" data-target="menu.leftBurger" data-action="click->menu#openLeftMenu"><i class="bi bi-list"></i></button>
+        <button class="btn right-burger text-muted" data-target="menu.rightBurger" data-action="click->menu#openRightMenu"><i class="bi bi-people"></i></button>
       <% end %>
     <%= render "shared/flashes" %>
 

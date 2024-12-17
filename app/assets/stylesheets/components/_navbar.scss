@@ -1,12 +1,107 @@
+// .navbar-lewagon {
+//   justify-content: space-between;
+//   background: white;
+// }
+
+// .navbar-lewagon .navbar-collapse {
+//   flex-grow: 0;
+// }
+
+// .navbar-lewagon .navbar-brand img {
+//   width: 40px;
+// }
+
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: #ffffffd3;
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.bg {
+  background-color: #000000d3;
+}
+
+.navbar {
+  position: fixed; /* Positionnement fixe pour la navbar */
+  bottom: 30px; /* Décalage depuis le bas de l'écran (ajustez selon le besoin) */
+  left: 50%; /* Centrer horizontalement */
+  transform: translateX(-50%); /* Centrer parfaitement la navbar */
+  border-radius: 24px; /* Bordures arrondies pour une forme plus fluide */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Ombre légère pour un effet de flottement */
+  z-index: 9999; /* Assurer que la navbar reste au-dessus des autres éléments */
+  width: 40%; /* Largeur ajustée pour occuper un peu moins que l'écran complet */
+}
+
+/* Navbar Dark Style */
+.navbar-dark .navbar-nav .nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 5px 0;
+}
+
+/* Styles pour les icônes de la navbar */
+.navbar .nav-link i {
+  background-color: #ffffffdd; /* Gris foncé pour l'arrière-plan */
+  border-radius: 50%; /* Arrondi complet pour former un cercle */
+  padding: 15px; /* Espacement autour de l'icône */
+  color: rgb(0, 0, 0); /* Couleur de l'icône (blanc) */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transition pour les effets */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Effet au survol des icônes */
+.navbar .nav-link:hover i {
+  background-color: rgb(255, 255, 255); /* Changement de la couleur de fond au survol */
+  transform: scale(1.1); /* Légère augmentation de la taille de l'icône */
+}
+
+/* Espacement entre les icônes */
+.navbar .nav-item {
+  padding: 0 5px; /* Espacement horizontal entre les éléments de la navbar */
+}
+
+/* Effet de survol global de la navbar */
+.navbar .nav-link:hover {
+  color: #ccc; /* Changer la couleur du texte au survol */
+}
+
+/* Responsive - Ajustements pour les écrans mobiles (ex : iPhone 14 Pro Max) */
+@media (max-width: 768px) { /* Smartphones */
+  .navbar {
+    width: 50%; /* Largeur plus grande sur mobile pour occuper presque tout l'écran */
+  }
+
+  .navbar .nav-link i {
+    font-size: 1.5rem; /* Réduire la taille des icônes sur mobile */
+    padding: 12px; /* Réduire l'espacement autour de l'icône */
+  }
+
+  .navbar .nav-item {
+    padding: 0px 0px; /* Réduire l'espacement horizontal */
+  }
+
+  /* Ajuster les éléments pour les petits écrans verticaux */
+  .navbar .nav-link {
+    font-size: 1.25rem; /* Réduire la taille du texte des liens pour économiser de l'espace */
+  }
+}
+
+/* Responsive - Ajustements pour les très grands écrans (tablettes et desktops) */
+@media (min-width: 1200px) { /* Écrans larges */
+  .navbar {
+    width: 30%; /* Réduire la largeur de la navbar pour les écrans très larges */
+  }
+
+  .navbar .nav-link i {
+    font-size: 2.5rem; /* Augmenter la taille des icônes sur les grands écrans */
+  }
 }
