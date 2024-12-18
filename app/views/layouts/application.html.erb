@@ -20,10 +20,11 @@
   </head>
 
   <body>
-    <div class="logo-back">
-      <%= render "shared/logo_centre"%>
-    </div>
+
     <div id="main-content" data-controller="menu" class="content">
+     <div class="logo-back">
+      <%= render "shared/logo_centre"%>
+     </div>
       <% if on_home_page? %>
         <%= render "shared/menu_left", user_capsules: @user_capsules%>
         <%= render "shared/menu_right", capsules: @capsules%>
