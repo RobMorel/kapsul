@@ -51,14 +51,14 @@
 .right-burger {
   position: fixed;
   top: 50px;
-  z-index: 1100;
+  z-index: 1200;
   background: none;
   border: none;
   font-size: 2rem;
   cursor: pointer;
   background-color: #ffffffdd;
   border: none; /* Pas de bordure */
-  border-radius: 8px; /* Coins arrondis */
+  /* Coins arrondis */
   padding: 0px; /* Espacement interne */
   transition: background-color 0.3s ease, transform 0.2s ease;
   width: 50px; /* Largeur du carré */
@@ -70,7 +70,7 @@
 
 .left-burger i,
 .right-burger i {
-  color: #000000f4; /* Couleur blanche */
+  color: #000000f4;
 }
 
 .left-burger:hover,
@@ -85,11 +85,13 @@
 }
 
 .left-burger {
-  left: 20px;
+  border-radius: 0 24px 24px 0;
+  left: 0px;
 }
 
 .right-burger {
-  right: 20px;
+  border-radius: 24px 0 0 24px;
+  right: 0px;
 }
 
 .custom-container {
