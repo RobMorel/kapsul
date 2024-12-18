@@ -2,8 +2,9 @@
    <div class="container-fluid d-flex justify-content-around">
      <% if user_signed_in? %>
 
+
       <%= link_to '#', class: "nav-link text-light d-flex flex-column align-items-center" do %>
-        <i class="bi bi-globe fa-2x" data-action="click->map#geolocate"></i>
+        <i class="bi bi-cursor" data-action="click->map#geolocate"></i>
       <% end %>
 
        <%= link_to new_capsule_path, class: "nav-link text-light d-flex flex-column align-items-center" do %>
