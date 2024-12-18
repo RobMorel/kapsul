@@ -20,7 +20,6 @@
   </head>
 
   <body>
-
     <div id="main-content" data-controller="menu" class="content">
 
       <% if on_home_page? %>
@@ -31,7 +30,10 @@
       <% end %>
 
     <%= yield %>
-    <%= render "shared/navbar" unless current_page?(root_path)%>
+
+    <% if !current_page?(new_user_session_path) && !current_page?(new_user_registration_path) && !current_page?(new_user_password_path)%>
+      <%= render "shared/navbar" %>
+    <% end %>
 
   </div>
   </body>

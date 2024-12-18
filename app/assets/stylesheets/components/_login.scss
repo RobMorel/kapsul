@@ -1,0 +1,85 @@
+
+/* login.scss */
+
+/* Container pour la page avec formulaire de connexion */
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Occupation de la hauteur totale de la fenêtre */
+  font-family: Arial, sans-serif; /* Fond clair */
+  position: relative;
+  z-index: 10; /* S'assurer que cette section est au-dessus des autres éléments */
+}
+
+/* Conteneur du logo */
+.login-form-container .logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px; /* Espace entre le logo et le formulaire */
+}
+
+.login-form-container .app-logo {
+  max-width: 200px;
+}
+
+/* Conteneur du formulaire */
+.login-form-container .form-container {
+  width: 100%;
+  max-width: 400px; /* Largeur maximum du formulaire */
+  padding: 20px;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+  z-index: 20; /* Assure que le formulaire soit au-dessus des autres éléments */
+  font-family: Arial, sans-serif;
+}
+
+/* Styles supplémentaires pour aligner le formulaire dans un conteneur flex */
+#main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Cela va centrer le contenu au centre de la page */
+  flex-direction: column; /* On s'assure que le contenu ne s'étire pas horizontalement */
+}
+
+/* Cacher les autres éléments du menu latéral */
+#main-content .content {
+  width: 100%;
+  position: relative;
+}
+
+/* Cacher le menu latéral si nécessaire */
+#main-content .content {
+  display: block;
+  justify-content: center;
+}
+
+
+.form-inputs {
+  font-family: Arial, sans-serif;
+}
+
+.form-actions {
+  text-align: center;
+}
+
+.form-links {
+  text-align: center; /* Centre le texte horizontalement */
+  margin-top: 15px; /* Ajoute un espacement au-dessus des liens */
+}
+
+.form-links a {
+  display: block; /* Les liens s'affichent sur des lignes distinctes */
+  color: #007bff; /* Couleur bleue par défaut */
+  text-decoration: none; /* Supprime le soulignement par défaut */
+  margin: 5px 0; /* Espacement entre les liens */
+}
+
+.form-links a:hover {
+  text-decoration: underline; /* Ajoute un soulignement au survol */
+}
