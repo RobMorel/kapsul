@@ -15,7 +15,7 @@ export default class extends Controller {
   connect() {
     console.log('Map controller connected')
     this.initMapbox();
-    this.trackUserPosition();
+    //this.trackUserPosition();
     this.#addMarkersToMap();
     this.#fitMapToMarkers();
   }
@@ -43,43 +43,43 @@ export default class extends Controller {
 
   }
 
-  trackUserPosition() {
-    if (this.geolocationWatcherId) {
-      navigator.geolocation.clearWatch(this.geolocationWatcherId);
-      console.log("Cleared previous geolocation watcher");
-    }
+  // trackUserPosition() {
+  //   if (this.geolocationWatcherId) {
+  //     navigator.geolocation.clearWatch(this.geolocationWatcherId);
+  //     console.log("Cleared previous geolocation watcher");
+  //   }
 
-    if (navigator.geolocation) {
-      this.geolocationWatcherId = navigator.geolocation.watchPosition(
-        (position) => {
-          const { latitude, longitude, heading } = position.coords;
-          console.log(`Tracking user's position: ${latitude}, ${longitude}, heading: ${heading}`);
-          this.updateMapCenter([longitude, latitude], heading);
-        },
-        (error) => {
-          console.error("Error tracking position:", error);
-        },
-        {
-          enableHighAccuracy: true,
-          maximumAge: 0,
-          distanceFilter: 10,
-        }
-      );
+  //   if (navigator.geolocation) {
+  //     this.geolocationWatcherId = navigator.geolocation.watchPosition(
+  //       (position) => {
+  //         const { latitude, longitude, heading } = position.coords;
+  //         console.log(`Tracking user's position: ${latitude}, ${longitude}, heading: ${heading}`);
+  //         this.updateMapCenter([longitude, latitude], heading);
+  //       },
+  //       (error) => {
+  //         console.error("Error tracking position:", error);
+  //       },
+  //       {
+  //         enableHighAccuracy: true,
+  //         maximumAge: 0,
+  //         distanceFilter: 10,
+  //       }
+  //     );
 
-      console.log("Started geolocation watcher with ID:", this.geolocationWatcherId);
-    } else {
-      console.error("Geolocation is not supported by this browser.");
-    }
-  }
+  //     console.log("Started geolocation watcher with ID:", this.geolocationWatcherId);
+  //   } else {
+  //     console.error("Geolocation is not supported by this browser.");
+  //   }
+  // }
 
      geolocate(event) {
       event.preventDefault();
       console.log("Geolocate button clicked");
 
-      if (this.geolocationWatcherId) {
-        navigator.geolocation.clearWatch(this.geolocationWatcherId);
-        console.log("Paused geolocation watcher temporarily.");
-      }
+      // if (this.geolocationWatcherId) {
+      //   navigator.geolocation.clearWatch(this.geolocationWatcherId);
+      //   console.log("Paused geolocation watcher temporarily.");
+      // }
 
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -87,7 +87,7 @@ export default class extends Controller {
             console.log("bla bla User's current position:", position);
             const { latitude, longitude, heading } = position.coords;
             this.updateMapCenter([longitude, latitude], heading);
-            this.trackUserPosition();
+            //this.trackUserPosition();
           },
           (error) => {
             console.error("Error getting current position:", error);
