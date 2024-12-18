@@ -8,16 +8,18 @@
 </div>
 
 <div class="content">
-  <div>
-    <%= cl_image_tag(capsule.user.avatar.key.presence || 'logo-capsule.png', class: "capsule-avatar mb-2", alt: "User Avatar") %>
-    <span class="name"><%= capsule.user.name %></span>
-  </div>
-  <div class="button-right">
-    <% like = capsule.likes.find_by(user: current_user)  %>
-    <%= render "button_like", capsule: capsule, like: like%>
+  <div class="d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center">
+      <%= cl_image_tag(capsule.user.avatar.key.presence || 'logo-capsule.png', class: "capsule-avatar me-2", alt: "User Avatar") %>
+      <span class="name"><%= capsule.user.name %></span>
+    </div>
+    <div class="button-right">
+      <% like = capsule.likes.find_by(user: current_user) %>
+      <%= render "button_like", capsule: capsule, like: like %>
+    </div>
   </div>
 </div>
- 
+
 <div>
   <p class="card-description"><%= capsule.teasing %></p>
 </div>
