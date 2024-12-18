@@ -10,37 +10,42 @@
   border: 2px solid white;
 }
 
+.marker-style-all {
+  background-color: gray;
+  color: white;
+}
+
 .marker-style-histoire {
-  background-color: yellow;
+  background-color: #DEAA79;
   color: black;
 }
 
 .marker-style-nature {
-  background-color: green;
-  color: white;
+  background-color: #8FD14F;
+  color: black;
 }
 
 .marker-style-architecture {
-  background-color: orange;
+  background-color: #B44C3B;
   color: black;
 }
 
 .marker-style-love {
-  background-color: pink;
+  background-color:  #FFCCEA;
   color: black;
 }
 
 .marker-style-horreur {
-  background-color: red;
+  background-color: #d40404 ;
   color: black;
 }
 
 .marker-style-art {
-  background-color: #004D73;
-  color: white;
+  background-color: #ff7300;
+  color: black;
 }
 
 .marker-style-fantasy {
-  background-color: purple;
-  color: white;
+  background-color: #40E0D0;
+  color: black;
 }
