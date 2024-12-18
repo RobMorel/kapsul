@@ -3,20 +3,21 @@
   background-color: rgb(29, 28, 28);
   color: #fff;
   text-align: center;
-  margin: auto;
-  margin-top: auto;
+  margin: 0 auto; /* Centre horizontalement */
   border-radius: 10px;
   position: relative;
+  display: flex; /* Active Flexbox */
+  align-items: center; /* Centre le contenu verticalement dans la capsule */
+  justify-content: center; /* Centre le contenu horizontalement dans la capsule */
 }
 
 .logo-back {
-width: 100% ;
-display: flex;
-justify-content: center;
-align-items: center;
-margin: 0;
-position: absolute;
-z-index: 1;
-
-margin-top: 0px;
+  width: 100%;
+  display: flex; /* Active Flexbox */
+  align-items: flex-start; /* Aligne le contenu en haut */
+  justify-content: center; /* Centre horizontalement */
+  position: absolute;
+  top: 0; /* Place l'élément en haut de l'écran */
+  z-index: 1;
+  padding-top: 0px; /* Ajoute un léger espacement en haut */
 }
