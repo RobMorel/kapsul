@@ -60,10 +60,27 @@ export default class extends Controller {
         });
 
         mediaRecorder.onstop = async () => {
-          console.log("Recording stopped. Preparing upload...");
+          console.log("Recording stopped. Preparing playback and upload...");
 
           const blob = new Blob(chunks, { type: mediaRecorder.mimeType });
           chunks = [];
+
+          // Création d'une URL pour lire l'audio
+          const audioURL = URL.createObjectURL(blob);
+          let audioPlayer = document.querySelector(".audio-player");
+
+          // Vérifier si le lecteur audio existe déjà, sinon le créer
+          if (!audioPlayer) {
+            audioPlayer = document.createElement("audio");
+            audioPlayer.classList.add("audio-player");
+            audioPlayer.controls = true; // Ajoute les contrôles (lecture/pause, etc.)
+            document.querySelector(".main-controls").appendChild(audioPlayer);
+          }
+
+          // Mettre à jour la source du lecteur audio
+          audioPlayer.src = audioURL;
+
+          // Upload vers Cloudinary
           const formData = new FormData();
           formData.append("file", blob);
           formData.append("upload_preset", "audio_capsules");
