@@ -8,5 +8,6 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :capsules, dependent: :destroy
+  validates :avatar, presence: true
   validates :name, presence: true, uniqueness: true
 end
