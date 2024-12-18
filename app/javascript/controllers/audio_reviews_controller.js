@@ -31,6 +31,6 @@ export default class extends Controller {
     this.audioTarget.currentTime = 0; // Revenir au début de l'audio
     this.audioTarget.play(); // Rejouer l'audio
     this.playButtonTarget.style.display = "none"; // Masquer le bouton play
-   
+
   }
 }

@@ -1,0 +1,36 @@
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: block;
+}
+
+.profile-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff9e8;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.space-container {
+  margin-right: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.profile-container input[type="text"],
+.profile-container input[type="email"],
+.profile-container input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}

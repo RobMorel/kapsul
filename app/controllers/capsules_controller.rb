@@ -13,18 +13,8 @@ class CapsulesController < ApplicationController
       {
         lat: capsule.latitude,
         lng: capsule.longitude,
-        infoWindow: render_to_string(partial: "info_capsule", formats: [:html], locals: { capsule: capsule }),
-        marker_html: render_to_string(partial: "marker", formats: [:html], locals: { capsule: capsule})
-      }
-    end
-
-    respond_to do |format|
-      format.html
-      format.turbo_stream {
-        render turbo_stream: [
-          turbo_stream.replace("map", partial: "map", locals: { markers: @markers }),
-          turbo_stream.replace("capsules_list", partial: "capsules_list", locals: { capsules: @capsules })
-        ]
+        infoWindow: render_to_string(partial: "info_capsule", locals: { capsule: capsule }),
+        marker_html: render_to_string(partial: "marker", locals: { capsule: capsule})
       }
     end
 
@@ -38,8 +28,8 @@ class CapsulesController < ApplicationController
     @capsule = Capsule.new(capsule_params)
     @capsule.user = current_user
     if @capsule.save
-      redirect_to root_path(format: :html, lat: @capsule.latitude, lng: @capsule.longitude, zoom: 12, openPopup: true), status: :see_other
-      # redirect_to root_path(lat: @capsule.latitude, lng: @capsule.longitude, zoom: 12, openPopup: true), status: :see_other
+      redirect_to root_path(lat: @capsule.latitude, lng: @capsule.longitude, zoom: 12, openPopup: true)
+      # maybe add the status: :see_other in case of issue after capsule save
     else
       render turbo_stream: turbo_stream.replace("capsule-form", partial: "capsules/form", locals: { capsule: @capsule })
     end
