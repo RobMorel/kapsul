@@ -1,15 +1,17 @@
-  <div id="right-menu" class="side-menu">
-    <button class="btn close-btn text-muted" data-action="click->menu#closeRightMenu"><i class="fa-solid fa-angles-right"></i></button>
-    <h2 class="text-center p-2 mt-3">Exploration</h2>
+<div id="right-menu" class="side-menu">
+  <button class="btn close-btn text-muted" data-action="click->menu#closeRightMenu"><i class="bi bi-x-circle"></i></button>
+  <h2 class="text-center p-2 mt-3">Exploration</h2>
 
-    <div class="d-flex flex-wrap gap-2 p-3 custom-container">
-      <button type="button" class="btn btn-primary rounded-pill px-4 custom-active-btn">All</button>
-      <button type="button" class="btn btn-outline-secondary rounded-pill px-4 custom-default-btn">Category</button>
-      <button type="button" class="btn btn-outline-secondary rounded-pill px-4 custom-default-btn">Pro</button>
-      <button type="button" class="btn btn-outline-secondary rounded-pill px-4 custom-default-btn">Gold</button>
-      <button type="button" class="btn btn-outline-secondary rounded-pill px-4 custom-default-btn">Tendances</button>
-      <button type="button" class="btn btn-outline-secondary rounded-pill px-4 custom-default-btn">Views</button>
-    </div>
+<div class="d-flex flex-wrap gap-2 p-3 custom-container">
+  <%= link_to "All", root_path(category: "all"), class: "btn-category" %>
+  <%= link_to "Histoire", root_path(category: "histoire"), class: "btn-category marker-style-histoire" %>
+  <%= link_to "Art", root_path(category: "art"), class: "btn-category marker-style-art" %>
+  <%= link_to "Love", root_path(category: "love"), class: "btn-category marker-style-love" %>
+  <%= link_to "Architecture", root_path(category: "architecture"), class: "btn-category marker-style-architecture" %>
+  <%= link_to "Horreur", root_path(category: "horreur"), class: "btn-category marker-style-horreur" %>
+  <%= link_to "Nature", root_path(category: "nature"), class: "btn-category marker-style-nature" %>
+  <%= link_to "Fantasy", root_path(category: "fantasy"), class: "btn-category marker-style-fantasy" %>
+</div>
 
     <ul class="list-unstyled">
       <% capsules.each do |capsule| %>
@@ -18,4 +20,4 @@
       </li>
         <% end %>
     </ul>
-  </div>
+</div>

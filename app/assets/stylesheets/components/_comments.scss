@@ -1,0 +1,149 @@
+.hidden{
+  display: none;
+}
+
+#show-comments {
+  background-color: #ffeeba; /* Couleur neutre et chaude */
+  color: #000000; /* Teinte noir douce */
+  border: none;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre douce */
+  transition: transform 0.2s ease-in-out, background-color 0.3s ease;
+}
+
+#show-comments:hover {
+  transform: scale(1.1); /* Zoom léger au survol */
+  background-color: #fece7a; /* Couleur accentuée au survol */
+}
+
+.comments-popup {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: #ffefc5; /* Couleur de fond chaleureuse */
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Effet de profondeur */
+  z-index: 10;
+  overflow: hidden;
+  animation: fadeIn 0.3s ease-in-out; /* Animation d'apparition */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.popup-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px;
+  border-bottom: 1px solid #ffe6ba; /* Légère séparation avec teinte assortie */
+}
+
+.btn-close {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #f4a261; /* Couleur moderne et chaleureuse */
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.btn-close:hover {
+  transform: scale(1.2); /* Zoom au survol */
+  color: #e76f51; /* Accentuation */
+}
+
+.popup-body {
+  background-color: #fff9e8; /* Fond doux et clair */
+  width: 100%;
+  height: calc(100% - 40px); /* Compte tenu du header */
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.comments-list {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 20px; /* Espacement avec le formulaire */
+  padding-right: 10px;
+  scrollbar-width: thin; /* Modernisation des scrollbars */
+  scrollbar-color: #ffe6ba transparent;
+}
+
+.comments-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.comments-list::-webkit-scrollbar-thumb {
+  background-color: #ffe6ba; /* Couleur des scrollbars */
+  border-radius: 4px;
+}
+
+textarea {
+  background-color: #fff7e0; /* Couleur douce et chaude */
+  resize: none;
+  height: 50px;
+  padding: 12px;
+  width: 100%; /* Réduit la largeur du textarea pour laisser place au bouton */
+  box-sizing: border-box;
+  border: 1px solid #ffd8a8; /* Bordure moderne et assortie */
+  border-radius: 8px;
+  font-family: 'Arial', sans-serif;
+  font-size: 1rem;
+  color: #333; /* Texte sombre pour lisibilité */
+  transition: border-color 0.2s ease;
+}
+
+textarea:focus {
+  border-color: #f4a261; /* Couleur mise en évidence */
+  outline: none;
+  background-color: #ffffff; /* Mise en valeur subtile */
+}
+
+.comments-form-container {
+  display: flex; /* Utilise flexbox pour aligner les éléments horizontalement */
+  gap: 10px;
+  align-items: flex-end; /* Aligner les éléments à la base */
+  width: 100%; /* Utilise toute la largeur disponible */
+}
+
+#send-comments {
+  background-color: #f4a261; /* Couleur primaire moderne */
+  color: #000000;
+  border-radius: 8px; /* Légèrement arrondi */
+  padding: 10px 16px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  height: 50px; /* Alignement avec le textarea */
+  width: auto; /* Laisser la largeur s'ajuster automatiquement */
+}
+
+#send-comments i {
+  margin-right: 0px; /* Espacement entre l'icône et le texte */
+}
+
+#send-comments:hover {
+  background-color: #e76f51; /* Accentuation au survol */
+  transform: scale(1.05); /* Zoom léger */
+}

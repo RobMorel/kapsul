@@ -1,0 +1,24 @@
+.capsule {
+  width: 100px;
+  background-color: rgb(29, 28, 28);
+  color: #fff;
+  text-align: center;
+  font-size: larger;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+  padding: 0px;
+  margin: auto;
+  margin-top: auto;
+  border-radius: 10px;
+  position: relative;
+}
+
+.logo-back {
+width: 100% ;
+align-items: center;
+margin: 0;
+position: absolute;
+z-index: 1;
+
+margin-top: 10px;
+}

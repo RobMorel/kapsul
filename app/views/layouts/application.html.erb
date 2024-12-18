@@ -13,19 +13,25 @@
 
     <%= render 'shared/ios_pwa_links' %>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <div class="logo-back">
+      <%= render "shared/logo_centre"%>
+    </div>
     <div id="main-content" data-controller="menu" class="content">
       <% if on_home_page? %>
         <%= render "shared/menu_left", user_capsules: @user_capsules%>
         <%= render "shared/menu_right", capsules: @capsules%>
-        <button class="btn left-burger text-muted" data-menu-target="leftBurger" data-action="click->menu#openLeftMenu"><i class="fa-solid fa-angles-right"></i></button>
-        <button class="btn right-burger text-muted" data-menu-target="rightBurger" data-action="click->menu#openRightMenu"><i class="fa-solid fa-angles-left"></i></button>
+        <button class="btn left-burger text-muted" data-menu-target="leftBurger" data-action="click->menu#openLeftMenu"><i class="bi bi-list"></i></button>
+        <button class="btn right-burger text-muted" data-menu-target="rightBurger" data-action="click->menu#openRightMenu"><i class="bi bi-people"></i></button>
       <% end %>
     <%= render "shared/flashes" %>
+
 
     <%= yield %>
     <%= render "shared/navbar" unless current_page?(root_path)%>

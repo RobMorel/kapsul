@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up, keys: [:avatar, :name])
   end
+
+  def after_update_path_for
+    root_path
+  end
 end

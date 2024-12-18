@@ -40,6 +40,7 @@ export default class extends Controller {
         this.map.addImage("custom-geolocate-icon", image);
       });
     });
+
   }
 
   trackUserPosition() {

@@ -1,0 +1,46 @@
+// Markers styles
+// Categories: histoire, art, love, architecture, temporaire, cachée, horreur, légende, nature, fantasy
+.marker-style-default {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+}
+
+.marker-style-histoire {
+  background-color: yellow;
+  color: black;
+}
+
+.marker-style-nature {
+  background-color: green;
+  color: white;
+}
+
+.marker-style-architecture {
+  background-color: orange;
+  color: black;
+}
+
+.marker-style-love {
+  background-color: pink;
+  color: black;
+}
+
+.marker-style-horreur {
+  background-color: red;
+  color: black;
+}
+
+.marker-style-art {
+  background-color: #004D73;
+  color: white;
+}
+
+.marker-style-fantasy {
+  background-color: purple;
+  color: white;
+}
