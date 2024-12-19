@@ -14,7 +14,8 @@ class CapsulesController < ApplicationController
         lat: capsule.latitude,
         lng: capsule.longitude,
         infoWindow: render_to_string(partial: "info_capsule", locals: { capsule: capsule }),
-        marker_html: render_to_string(partial: "marker", locals: { capsule: capsule})
+        marker_html: render_to_string(partial: "marker", locals: { capsule: capsule}),
+        is_owner: capsule.user == current_user
       }
     end
 

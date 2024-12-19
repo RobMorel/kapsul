@@ -12,10 +12,11 @@ export default class extends Controller {
 
   static targets = ['map']
 
+  userLocation = { latitude: 48.8566, longitude: 2.3522 };
+
   connect() {
     console.log('Map controller connected')
     this.initMapbox();
-    //this.trackUserPosition();
     this.#addMarkersToMap();
     this.#fitMapToMarkers();
   }
@@ -43,61 +44,28 @@ export default class extends Controller {
 
   }
 
-  // trackUserPosition() {
-  //   if (this.geolocationWatcherId) {
-  //     navigator.geolocation.clearWatch(this.geolocationWatcherId);
-  //     console.log("Cleared previous geolocation watcher");
-  //   }
+  geolocate(event) {
+  event.preventDefault();
+  console.log("Geolocate button clicked");
 
-  //   if (navigator.geolocation) {
-  //     this.geolocationWatcherId = navigator.geolocation.watchPosition(
-  //       (position) => {
-  //         const { latitude, longitude, heading } = position.coords;
-  //         console.log(`Tracking user's position: ${latitude}, ${longitude}, heading: ${heading}`);
-  //         this.updateMapCenter([longitude, latitude], heading);
-  //       },
-  //       (error) => {
-  //         console.error("Error tracking position:", error);
-  //       },
-  //       {
-  //         enableHighAccuracy: true,
-  //         maximumAge: 0,
-  //         distanceFilter: 10,
-  //       }
-  //     );
-
-  //     console.log("Started geolocation watcher with ID:", this.geolocationWatcherId);
-  //   } else {
-  //     console.error("Geolocation is not supported by this browser.");
-  //   }
-  // }
-
-     geolocate(event) {
-      event.preventDefault();
-      console.log("Geolocate button clicked");
-
-      // if (this.geolocationWatcherId) {
-      //   navigator.geolocation.clearWatch(this.geolocationWatcherId);
-      //   console.log("Paused geolocation watcher temporarily.");
-      // }
-
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            console.log("bla bla User's current position:", position);
-            const { latitude, longitude, heading } = position.coords;
-            this.updateMapCenter([longitude, latitude], heading);
-            //this.trackUserPosition();
-          },
-          (error) => {
-            console.error("Error getting current position:", error);
-          },
-          { enableHighAccuracy: true }
-        );
-      } else {
-        console.error("Geolocation is not supported by this browser.");
-      }
-     }
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        console.log("bla bla User's current position:", position);
+        const { latitude, longitude, heading } = position.coords;
+        this.userLocation = { latitude, longitude };
+        this.#addMarkersToMap();
+        this.updateMapCenter([longitude, latitude], heading);
+      },
+      (error) => {
+        console.error("Error getting current position:", error);
+      },
+      { enableHighAccuracy: true }
+    );
+  } else {
+    console.error("Geolocation is not supported by this browser.");
+  }
+  }
 
      updateMapCenter([longitude, latitude], heading = 0) {
       this.addOrUpdateUserCursor([longitude, latitude], heading);
@@ -191,24 +159,45 @@ export default class extends Controller {
       }
     }
 
-
     #addMarkersToMap() {
       console.log('adding markers to map')
       console.log("Markers Value:", this.markersValue);
+      console.log("User Location:", this.userLocation);
+
+      if (!this.userLocation) {
+        console.error("User location is not available yet.");
+        return; // Skip adding markers until userLocation is set
+      }
+
+      const userLngLat = new mapboxgl.LngLat(this.userLocation.longitude, this.userLocation.latitude);
+      const radiusInMeters = 200;
 
       this.markersValue.forEach((marker) => {
+        const markerLngLat = new mapboxgl.LngLat(marker.lng, marker.lat);
+
+        const distance = userLngLat.distanceTo(markerLngLat);
+
+        const isClickable = distance <= radiusInMeters || marker.is_owner;
+
         const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
 
         const customMarker = document.createElement("div");
         customMarker.innerHTML = marker.marker_html;
-        const mrker = new mapboxgl.Marker(customMarker).setLngLat([marker.lng, marker.lat]).setPopup(popup).addTo(this.map)
 
-        if (this.params.get("openPopup") && (this.params.get("lat") == marker.lat) && (this.params.get("lng") == marker.lng) ) {
-          mrker.togglePopup()
+        const mrker = new mapboxgl.Marker(customMarker)
+          .setLngLat(markerLngLat)
+          .addTo(this.map);
+
+        if (isClickable) {
+          mrker.setPopup(popup);
+        } else if ((marker.is_owner) && (this.params.get("lat") != marker.lat) && (this.params.get("lng") != marker.lng)) {
+          mrker.setPopup(popup).togglePopup();
+        } else {
+          customMarker.style.pointerEvents = "none";
+          customMarker.style.opacity = 0.5;
         }
       });
     }
-
 
     #fitMapToMarkers() {
 
@@ -222,11 +211,6 @@ export default class extends Controller {
         // this.map.flyTo({ center: [lng, lat], zoom: 4, essential: true})
         bounds.extend([lng, lat]);
         this.map.fitBounds(bounds, { padding: 70, maxZoom: zoom, duration: 0 });
-      } else {
-        this.markersValue.forEach((marker) => {
-          bounds.extend([marker.lng, marker.lat]);
-        });
-        //this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
       }
     }
 
