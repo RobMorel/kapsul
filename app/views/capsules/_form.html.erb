@@ -9,6 +9,7 @@
         <div data-form-steps-target="step" class="step center-audio">
 
           <h3 class="text-center text-black fw-bold mb-4">Recording Kapsul</h3>
+          <%= image_tag "icons/Photo/rb_5912.png", width: "180px"%>
 
           <%= render "record" %>
 
@@ -70,7 +71,7 @@
             input_html: {data: {address_autocomplete_target: "address", position_target: "address"}, class: "d-none"},
             wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
           %>
-          <button type="button" class="btn btn-light text-white rounded-pill px-4"  style="background-color: #000000de" data-position-target="button" data-action="position#getPosition">Set my current position</button>
+          <button type="button" class="btn btn-secondary mt-2" data-position-target="button" data-action="position#getPosition"><i class="fa-solid fa-map-pin"></i> Set my current position</button>
           </div>
 
           <div class="form-group mb-3">
