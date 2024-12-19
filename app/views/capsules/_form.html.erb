@@ -13,11 +13,11 @@
           <%= render "record" %>
 
           <div class="d-flex justify-content-between mt-3">
-            <button type="button" class="btn btn-light text-white rounded-pill px-4" data-action="form-steps#nextStep">Next</button>
+            <button type="button" class="btn btn-light text-white rounded-pill px-4" style="background-color: #000000de" data-action="form-steps#nextStep">Next</button>
           </div>
 
           <div class="justify-content-center align-items-center progress-bar-container">
-            <div class="rounded-pill size" style="background-color: #0B173F;"></div>
+            <div class="rounded-pill size" style="background-color: #000000de;"></div>
             <div class="rounded-pill size" style="background-color: #C8102E;"></div>
             <div class="rounded-pill size" style="background-color: #C8102E;"></div>
           </div>
@@ -36,27 +36,27 @@
           </div>
           <div class="form-group mb-3">
               <%= f.collection_select :category,
-                          [['Histoire', 'histoire'],
+                          [['Histoiry', 'histoiry'],
                            ['Art', 'art'],
                            ['Love', 'love'],
                            ['Architecture', 'architecture'],
-                           ['Horreur', 'horreur'],
+                           ['Horror', 'horror'],
                            ['Nature', 'nature'],
                            ['Fantasy', 'fantasy']],
                           :second,
                           :first,
-                          { label: "Category", prompt: "Sélectionnez une catégorie", required: true },
+                          { label: "Category", prompt: "Select a category", required: true },
                           { class: "form-control" } %>
           </div>
 
           <div class="d-flex justify-content-between mt-3">
-            <button type="button" class="btn btn-light text-white rounded-pill px-4" data-action="form-steps#previousStep">Back</button>
-            <button type="button" class="btn btn-light text-white rounded-pill px-4" data-action="form-steps#nextStep">Continue</button>
+            <button type="button" class="btn btn-light text-white rounded-pill px-4" style="background-color: #000000de" data-action="form-steps#previousStep">Back</button>
+            <button type="button" class="btn btn-light text-white rounded-pill px-4" style="background-color: #000000de" data-action="form-steps#nextStep">Continue</button>
           </div>
 
           <div class="justify-content-center align-items-center progress-bar-container">
-            <div class="rounded-pill size" style="background-color: #0B173F;"></div>
-            <div class="rounded-pill size" style="background-color: #0B173F;"></div>
+            <div class="rounded-pill size" style="background-color: #000000de;"></div>
+            <div class="rounded-pill size" style="background-color: #000000de;"></div>
             <div class="rounded-pill size" style="background-color: #C8102E;"></div>
           </div>
         </div>
@@ -70,7 +70,7 @@
             input_html: {data: {address_autocomplete_target: "address", position_target: "address"}, class: "d-none"},
             wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
           %>
-          <button type="button" class="btn btn-secondary mt-2" data-position-target="button" data-action="position#getPosition">Set my current position</button>
+          <button type="button" class="btn btn-light text-white rounded-pill px-4"  style="background-color: #000000de" data-position-target="button" data-action="position#getPosition">Set my current position</button>
           </div>
 
           <div class="form-group mb-3">
@@ -78,14 +78,14 @@
           </div>
 
           <div class="d-flex justify-content-between mt-3">
-            <button type="button" class="btn btn-light text-white rounded-pill px-4" data-action="form-steps#previousStep">Back</button>
-            <%= f.button :submit, "Submit", class: "btn btn-light text-white rounded-pill px-4" %>
+            <button type="button" class="btn btn-light text-white rounded-pill px-4" style="background-color: #000000de" data-action="form-steps#previousStep">Back</button>
+            <%= f.button :submit, "Submit", class: "btn btn-light text-white rounded-pill px-4", style: "background-color: #000000de;" %>
           </div>
 
           <div class="justify-content-center align-items-center progress-bar-container">
-            <div class="rounded-pill size" style="background-color: #0B173F;"></div>
-            <div class="rounded-pill size" style="background-color: #0B173F;"></div>
-            <div class="rounded-pill size" style="background-color: #0B173F;"></div>
+            <div class="rounded-pill size" style="background-color: #000000de;"></div>
+            <div class="rounded-pill size" style="background-color: #000000de;"></div>
+            <div class="rounded-pill size" style="background-color: #000000de;"></div>
           </div>
 
         </div>
