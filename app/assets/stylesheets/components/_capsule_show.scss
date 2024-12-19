@@ -40,12 +40,20 @@
 }
 
 
+.capsule-photo {
+  width: 229px;
+  height: 220px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .capsule-photo img {
   width: 100%;
-  height: auto;
-  border-radius: 10px;
+  height: 100%;
   object-fit: cover;
-  max-height: 220px;
   display: block;
 }
 
