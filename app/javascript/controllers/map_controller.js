@@ -188,10 +188,10 @@ export default class extends Controller {
           .setLngLat(markerLngLat)
           .addTo(this.map);
 
-        if (isClickable) {
-          mrker.setPopup(popup);
-        } else if ((marker.is_owner) && (this.params.get("lat") != marker.lat) && (this.params.get("lng") != marker.lng)) {
+        if ((marker.is_owner) && (this.params.get("lat") == marker.lat) && (this.params.get("lng") == marker.lng)) {
           mrker.setPopup(popup).togglePopup();
+        } else if (isClickable) {
+          mrker.setPopup(popup);
         } else {
           customMarker.style.pointerEvents = "none";
           customMarker.style.opacity = 0.5;
