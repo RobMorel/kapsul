@@ -13,7 +13,7 @@
     <p class="typo-p"><strong> Registration on:</strong> <%= @user.created_at.strftime("%d %B %Y") %></p>
   </div>
   <div class="space-container " >
-  <%= link_to "Modifier mon profil", edit_user_path(@user), class: "btn btn-outline-warning" %>
+  <%= link_to "Edit my profile", edit_user_path(@user), class: "btn btn-outline-warning" %>
   <%= link_to "Cancel", root_path, class: "btn btn-outline-warning" %>
   </div>
 </div>
