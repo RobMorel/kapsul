@@ -13,7 +13,8 @@ Capsule.destroy_all
 default_user = User.first || User.create!(
   name: "Default User",
   email: "default@example.com",
-  password: "password"
+  password: "password",
+  avatar: "https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/navy-and-teal-explore-world-map-michelle-eshleman.jpg"
 )
 
 # URL de l'audio
