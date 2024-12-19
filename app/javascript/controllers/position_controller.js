@@ -13,6 +13,8 @@ export default class extends Controller {
           this.addressTarget.value = `${latitude},${longitude}`;
           this.addressTarget.readOnly = true;
           this.buttonTarget.disabled = true;
+          const input = document.querySelector(".mapboxgl-ctrl-geocoder--input");
+          input.value = `${latitude},${longitude}`;
         },
         (error) => {
           console.error("Error obtaining position:", error);

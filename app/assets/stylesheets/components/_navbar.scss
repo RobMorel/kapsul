@@ -26,10 +26,10 @@
 
 .navbar {
   position: fixed; /* Positionnement fixe pour la navbar */
-  bottom: 30px; /* Décalage depuis le bas de l'écran (ajustez selon le besoin) */
+  bottom: 0px; /* Décalage depuis le bas de l'écran (ajustez selon le besoin) */
   left: 50%; /* Centrer horizontalement */
   transform: translateX(-50%); /* Centrer parfaitement la navbar */
-  border-radius: 24px; /* Bordures arrondies pour une forme plus fluide */
+  border-radius: 24px 24px 0 0; /* Bordures arrondies pour une forme plus fluide */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Ombre légère pour un effet de flottement */
   z-index: 9999; /* Assurer que la navbar reste au-dessus des autres éléments */
   width: 40%; /* Largeur ajustée pour occuper un peu moins que l'écran complet */
@@ -103,5 +103,80 @@
 
   .navbar .nav-link i {
     font-size: 2.5rem; /* Augmenter la taille des icônes sur les grands écrans */
+  }
+}
+
+/* Bouton de bascule */
+.toggle-btn {
+  position: fixed; /* Fixé en bas de l'écran */
+  bottom: 86px; /* Position initiale */
+  left: 49.6%; /* Position initiale à droite de la navbar */
+  transform: translateX(-50%); /* Ajustement pour centrer parfaitement */
+  background-color: rgba(0, 0, 0, 0.5); /* Arrière-plan semi-transparent */
+  padding: 8px; /* Espacement interne */
+  border-radius: 16px 16px 0 0; /* Bouton circulaire */
+  cursor: pointer; /* Curseur en mode clic */
+  z-index: 1000; /* Assurez-vous qu'il est au-dessus de tout autre élément */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease, bottom 0.3s ease;
+  width: 80px;
+  height: 10px;
+}
+
+.toggle-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8); /* Couleur légèrement plus sombre au survol */
+}
+
+.toggle-btn i {
+  color: white; /* Couleur de l’icône */
+  font-size: 0.6rem; /* Taille de l'icône */
+}
+
+/* Flèche vers le bas (navbar visible) */
+.toggle-btn.down i {
+  transform: rotate(180deg); /* Flèche orientée vers le bas */
+}
+
+/* Flèche vers le haut (navbar rétractée) */
+.toggle-btn.up i {
+  transform: rotate(0deg); /* Flèche orientée vers le haut */
+}
+
+/* Lorsque la navbar est rétractée, le bouton se déplace en bas et au centre */
+.toggle-btn.hidden {
+  display: none !important; /* Cache complètement le bouton */
+}
+
+/* Quand la navbar est rétractée, déplacer la flèche vers le bas au centre */
+.toggle-btn.move-up {
+  bottom: 0px; /* Positionne la flèche vers le bas à 30px du bas de l'écran */
+  left: 49.6%; /* Centrer horizontalement */ /* Ajuster la position horizontale */
+}
+
+@media (max-width: 768px) { /* Smartphones et tablettes */
+  .toggle-btn {
+    bottom: 20px; /* Repositionner le bouton plus bas pour les écrans mobiles */
+    left: 50%; /* Centrer horizontalement */
+    transform: translateX(-50%); /* Ajuster la position horizontale */
+  }
+
+  /* Réduire la taille de l'icône sur les petits écrans */
+  .toggle-btn i {
+    font-size: 0.8rem;
+  }
+}
+
+/* Responsive - ajustements pour les très grands écrans (ex: iPhone 14 Pro Max) */
+@media (max-width: 1000px) { /* Tablettes et grands écrans */
+  .toggle-btn {
+    bottom: 64px; /* Positionner un peu plus bas pour les grands écrans */
+    left: 49,6%;
+    transform: translateX(-50%);
+  }
+
+  .toggle-btn i {
+    font-size: 0.8rem; /* Ajuster la taille de l'icône */
   }
 }

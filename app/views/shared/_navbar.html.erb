@@ -1,29 +1,36 @@
-<div class="navbar navbar-expand fixed-bottom bg">
-   <div class="container-fluid d-flex justify-content-around">
-     <% if user_signed_in? %>
+<div data-controller="navbar">
+  <div class="toggle-btn down"
+       data-action="click->navbar#toggleNavbar"
+       data-navbar-target="toggleBtn">
+    <i class="fas fa-chevron-up"></i>
+  </div>
+  <div class="navbar navbar-expand fixed-bottom bg" data-navbar-target="navbar">
+    <div class="container-fluid d-flex justify-content-around">
+      <% if user_signed_in? %>
 
 
-      <%= link_to root_path, class: "nav-link text-light d-flex flex-column align-items-center" do %>
-        <i class="bi bi-cursor" data-action="click->map#geolocate"></i>
-      <% end %>
+        <%= link_to root_path, class: "nav-link text-light d-flex flex-column align-items-center" do %>
+          <i class="bi bi-cursor" data-action="click->map#geolocate"></i>
+        <% end %>
 
-       <%= link_to new_capsule_path, class: "nav-link text-light d-flex flex-column align-items-center" do %>
-         <i class="bi bi-plus-circle-dotted fa-2x"></i>
-       <% end %>
+        <%= link_to new_capsule_path, class: "nav-link text-light d-flex flex-column align-items-center" do %>
+          <i class="bi bi-plus-circle-dotted fa-2x"></i>
+        <% end %>
 
-      <div class="nav-item dropdown dropup">
-        <a href="#" class="nav-link text-light d-flex flex-column align-items-center" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-cog fa-2x"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-          <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
-          <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
+        <div class="nav-item dropdown dropup">
+          <a href="#" class="nav-link text-light d-flex flex-column align-items-center" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="bi bi-gear"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
+          </div>
         </div>
-      </div>
-    <% else %>
-      <%= link_to new_user_session_path, class: "nav-link text-light d-flex flex-column align-items-center" do %>
-        Login
+      <% else %>
+        <%= link_to new_user_session_path, class: "nav-link text-light d-flex flex-column align-items-center" do %>
+          Login
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
