@@ -15,7 +15,12 @@ class CapsulesController < ApplicationController
         lng: capsule.longitude,
         infoWindow: render_to_string(partial: "info_capsule", locals: { capsule: capsule }),
         marker_html: render_to_string(partial: "marker", locals: { capsule: capsule}),
-        is_owner: capsule.user == current_user
+        is_owner: capsule.user == current_user,
+        title: capsule.title,
+        photo: capsule.photo&.url,
+        likes: capsule.likes.count,
+        created_at: capsule.created_at.strftime("%d %b %Y"),
+        link: root_path(lat: capsule.latitude, lng: capsule.longitude, zoom: 12, openPopup: true)
       }
     end
 
