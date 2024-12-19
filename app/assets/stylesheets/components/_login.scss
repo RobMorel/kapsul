@@ -1,85 +1,80 @@
-
-/* login.scss */
-
-/* Container pour la page avec formulaire de connexion */
-.login-form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; /* Occupation de la hauteur totale de la fenêtre */
-  font-family: Arial, sans-serif; /* Fond clair */
-  position: relative;
-  z-index: 10; /* S'assurer que cette section est au-dessus des autres éléments */
-}
-
-/* Conteneur du logo */
-.login-form-container .logo-container {
-  display: flex;
-  align-items: center;
+/* Image d'arrière-plan */
+.bg-login {
+  height: 100vh; /* Prenez toute la hauteur de l'écran */
+  display: flex; /* Utilisez flexbox pour centrer le contenu */
   justify-content: center;
-  margin-bottom: 30px; /* Espace entre le logo et le formulaire */
+  align-items: center; /* Ajoute un effet de flou */
+  position: relative;
 }
 
-.login-form-container .app-logo {
-  max-width: 200px;
-}
+// .bg::after {
+//   content: "";
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background: rgba(0, 0, 0, 0.6); /* Assombrit légèrement l'image */
+//   z-index: 1;
+// }
 
-/* Conteneur du formulaire */
-.login-form-container .form-container {
-  width: 100%;
-  max-width: 400px; /* Largeur maximum du formulaire */
-  padding: 20px;
-  background: white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+/* Boîte de formulaire */
+.form-container {
+  position: relative;
+  z-index: 2; /* Place le formulaire au-dessus de l'arrière-plan */
+  background: rgba(248, 248, 248, 0.501); /* Boîte semi-transparente */
   border-radius: 8px;
-  text-align: center;
-  position: relative;
-  z-index: 20; /* Assure que le formulaire soit au-dessus des autres éléments */
-  font-family: Arial, sans-serif;
+  padding: 50px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25); /* Ombre légère */
+  width: 350px;
+  max-width: 90%; /* Ajustement pour petits écrans */
+  margin-top: 150px;
 }
 
-/* Styles supplémentaires pour aligner le formulaire dans un conteneur flex */
-#main-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; /* Cela va centrer le contenu au centre de la page */
-  flex-direction: column; /* On s'assure que le contenu ne s'étire pas horizontalement */
+/* Style des champs de formulaire */
+.form-container input {
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
-/* Cacher les autres éléments du menu latéral */
-#main-content .content {
+/* Bouton de soumission */
+.form-container button {
   width: 100%;
-  position: relative;
-}
-
-/* Cacher le menu latéral si nécessaire */
-#main-content .content {
-  display: block;
-  justify-content: center;
-}
-
-
-.form-inputs {
-  font-family: Arial, sans-serif;
+  padding: 10px;
+  background-color: #4CAF50; /* Couleur verte moderne */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .form-actions {
-  text-align: center;
+  text-align: center; /* Centre le contenu horizontalement */
 }
 
-.form-links {
-  text-align: center; /* Centre le texte horizontalement */
-  margin-top: 15px; /* Ajoute un espacement au-dessus des liens */
+.form-container button:hover {
+  background-color: #45a049; /* Couleur au survol */
 }
 
+/* Liens supplémentaires */
 .form-links a {
-  display: block; /* Les liens s'affichent sur des lignes distinctes */
-  color: #007bff; /* Couleur bleue par défaut */
-  text-decoration: none; /* Supprime le soulignement par défaut */
-  margin: 5px 0; /* Espacement entre les liens */
+  color: #4CAF50;
+  text-decoration: none;
+  font-size: 14px;
 }
 
 .form-links a:hover {
-  text-decoration: underline; /* Ajoute un soulignement au survol */
+  text-decoration: underline;
+}
+
+.logo-wrapper {
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+  margin-bottom: 90px; /* Ajoute un espace en bas si nécessaire */
 }
