@@ -9,7 +9,7 @@ export default class extends Controller {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          //this.addressTarget.value = "Your position has been set";
+          //this.addressAutocompleteTarget.value = "Your position has been set";
           this.addressTarget.value = `${latitude},${longitude}`;
           this.addressTarget.readOnly = true;
           this.buttonTarget.disabled = true;

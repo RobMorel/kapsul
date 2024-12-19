@@ -8,5 +8,12 @@
   data-map-target="map"
   data-map-image-path-value="<%= asset_url('icons/Photo/map_logo.png') %>"
   data-map-markers-value="<%= @markers.to_json %>">
-   <%= render "shared/navbar" %>
+
+  <% if on_home_page? %>
+    <%= render "shared/menu_left", user_capsules: @user_capsules%>
+    <%= render "shared/menu_right", capsules: @capsules%>
+    <button class="btn left-burger text-muted" data-menu-target="leftBurger" data-action="click->menu#openLeftMenu"><i class="bi bi-list"></i></button>
+    <button class="btn right-burger text-muted" data-menu-target="rightBurger" data-action="click->menu#openRightMenu"><i class="bi bi-people"></i></button>
+  <% end %>
+  <%= render "shared/navbar" %>
 </div>

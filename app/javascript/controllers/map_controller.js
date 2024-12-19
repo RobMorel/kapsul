@@ -10,12 +10,13 @@ export default class extends Controller {
     imagePath: String
   }
 
-  static targets = ['map']
+  static targets = ['map'];
 
   userLocation = { latitude: 48.8566, longitude: 2.3522 };
 
   connect() {
     console.log('Map controller connected')
+
     this.initMapbox();
     this.#addMarkersToMap();
     this.#fitMapToMarkers();
@@ -224,24 +225,55 @@ export default class extends Controller {
       const listItem = document.createElement("li");
       listItem.className = "mt-2";
       listItem.innerHTML = `
-        <a href="${capsule.link}" class="text-decoration-none">
-          <div class="d-flex align-items-center border-0 p-2 shadow-sm card-capsule">
-            <div>
-              ${capsule.photo ? `<img src="${capsule.photo}" class="capsule-avatar" alt="${capsule.title}">` : ''}
-            </div>
-            <div class="ms-3">
-              <h6 class="mb-1 fw-bold" style="color: #333;">${capsule.title}</h6>
-              <div class="d-flex align-items-center text-muted" style="font-size: 14px;">
-                <i class="fa fa-heart text-danger me-1"></i>
-                <span>${capsule.likes || 0}</span>
-                <small class="ms-2">${capsule.created_at}</small>
-              </div>
+        <div class="d-flex align-items-center border-0 p-2 shadow-sm card-capsule"
+            data-action="map#navigateToCapsule"
+            data-lat="${capsule.lat}"
+            data-lng="${capsule.lng}">
+          <div>
+            ${capsule.photo ? `<img src="${capsule.photo}" class="capsule-avatar" alt="${capsule.title}">` : ''}
+          </div>
+          <div class="ms-3">
+            <h6 class="mb-1 fw-bold" style="color: #333;">${capsule.title}</h6>
+            <div class="d-flex align-items-center text-muted" style="font-size: 14px;">
+              <i class="fa fa-heart text-danger me-1"></i>
+              <span>${capsule.likes || 0}</span>
+              <small class="ms-2">${capsule.created_at}</small>
             </div>
           </div>
-        </a>`;
+        </div>`;
       listContainer.appendChild(listItem);
     });
   }
+
+  navigateToCapsule(event) {
+    const capsuleLat = parseFloat(event.currentTarget.dataset.lat);
+    const capsuleLng = parseFloat(event.currentTarget.dataset.lng);
+
+    // Center the map on the capsule's location
+    this.map.flyTo({
+      center: [capsuleLng, capsuleLat],
+      zoom: 15, // Adjust zoom level as needed
+      essential: true
+    });
+
+    // Find the corresponding marker and toggle its popup
+    const marker = this.markersValue.find(
+      (marker) => marker.lat === capsuleLat && marker.lng === capsuleLng
+    );
+
+    if (marker) {
+      //const markerLngLat = new mapboxgl.LngLat(marker.lng, marker.lat);
+      const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
+
+      // Add the popup to the map
+      new mapboxgl.Marker()
+        .setLngLat([marker.lng, marker.lat])
+        .setPopup(popup)
+        .addTo(this.map)
+        .togglePopup();
+    }
+  }
+
 
   #fitMapToMarkers() {
 
