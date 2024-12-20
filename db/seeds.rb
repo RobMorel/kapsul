@@ -14,13 +14,13 @@ default_user = User.first || User.create!(
   name: "Default User",
   email: "default@example.com",
   password: "password",
-  avatar: "https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/navy-and-teal-explore-world-map-michelle-eshleman.jpg"
+  avatar: "/images/icons/Photo/kapsul_logo.png"
 )
 
 # URL de l'audio
-audio_url = "https://asset.cloudinary.com/dkrxx2ews/4f75f3abb3dc458be92febe54b7b4b5d"
+audio_url = "https://res.cloudinary.com/dovsrvuw9/video/upload/v1734643804/anglais_k1l0bz.mp3"
 
-new_audio_url = "https://asset.cloudinary.com/dkrxx2ews/3a6f244d76b3eaf88d5d1152433e11ad"
+new_audio_url = "https://res.cloudinary.com/dovsrvuw9/video/upload/v1734643804/francais_wsytsp.mp3"
 
 # Données pour chaque capsule
 locations = [
@@ -552,7 +552,8 @@ new_locations = [
     places: [
       { name: "Bastille", category: "history", address: "Fort de la Bastille, Grenoble, France", latitude: 45.199202, longitude: 5.728197 },
       { name: "Place Victor Hugo", category: "art", address: "Place Victor Hugo, 38000 Grenoble, France", latitude: 45.188626, longitude: 5.724757 },
-      { name: "Musée de Grenoble", category: "architecture", address: "5 Pl. de Lavalette, 38000 Grenoble, France", latitude: 45.194443, longitude: 5.732751 }
+      { name: "Musée de Grenoble", category: "architecture", address: "5 Pl. de Lavalette, 38000 Grenoble, France", latitude: 45.194443, longitude: 5.732751 },
+      { name: "Chez Rob", category: "architecture", address: "6 rue Lakanal", latitude: 45.1863617, longitude: 5.7233166 }
     ]
   },
   {
