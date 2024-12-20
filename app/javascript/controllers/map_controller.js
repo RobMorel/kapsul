@@ -20,8 +20,6 @@ export default class extends Controller {
     this.initMapbox();
     this.#addMarkersToMap();
     this.#fitMapToMarkers();
-    this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
-      mapboxgl: mapboxgl }))
   }
 
   initMapbox() {
@@ -246,28 +244,26 @@ export default class extends Controller {
   }
 
   navigateToCapsule(event) {
+    console.log("Navigate to capsule:", event.currentTarget);
     const capsuleLat = parseFloat(event.currentTarget.dataset.lat);
     const capsuleLng = parseFloat(event.currentTarget.dataset.lng);
 
-    // Center the map on the capsule's location
     this.map.flyTo({
       center: [capsuleLng, capsuleLat],
-      zoom: 15, // Adjust zoom level as needed
+      zoom: 15,
       essential: true
     });
 
-    // Find the corresponding marker and toggle its popup
     const marker = this.markersValue.find(
       (marker) => marker.lat === capsuleLat && marker.lng === capsuleLng
     );
 
     if (marker) {
-      //const markerLngLat = new mapboxgl.LngLat(marker.lng, marker.lat);
+      const markerLngLat = new mapboxgl.LngLat(marker.lng, marker.lat);
       const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
 
-      // Add the popup to the map
       new mapboxgl.Marker()
-        .setLngLat([marker.lng, marker.lat])
+        .setLngLat(markerLngLat)
         .setPopup(popup)
         .addTo(this.map)
         .togglePopup();
