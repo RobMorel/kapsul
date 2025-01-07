@@ -1,18 +1,28 @@
-<h2>Forgot your password?</h2>
+<div class="bg-login" style="background-image: url('https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/navy-and-teal-explore-world-map-michelle-eshleman.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+  <div class="form-container">
+    <div class="logo-wrapper">
+      <%= image_tag("icons/Photo/logo-capsule-top.png", alt: "App Logo", width: "150", height: "auto") %>
+    </div>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
+    <h2>Forgot your password?</h2>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" } %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Send me instructions", class: "btn-submit" %>
+      </div>
+    <% end %>
+
+    <div class="form-links">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
